@@ -16,14 +16,14 @@ export function FaixaRolante() {
 
   return (
     <div
-      className="relative flex overflow-hidden border-y border-borda bg-carvao-2 py-5"
+      className="relative flex overflow-hidden border-y border-borda bg-carvao-2 py-4 sm:py-5"
       aria-hidden
     >
       <div className="faixa-rolante flex shrink-0 items-center gap-8 pr-8 whitespace-nowrap">
         {sequencia.map((nome, indice) => (
           <span key={`${nome}-${indice}`} className="flex items-center gap-8">
             <span
-              className={`display text-3xl sm:text-4xl ${
+              className={`display text-2xl sm:text-4xl ${
                 indice % 2 === 0 ? "text-osso" : "vazado"
               }`}
             >

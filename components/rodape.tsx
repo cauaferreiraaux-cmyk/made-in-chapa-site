@@ -11,8 +11,8 @@ export function Rodape() {
       <div className="halo -top-40 right-0" aria-hidden />
 
       <div className="relative mx-auto max-w-7xl px-5 py-16 sm:px-8 sm:py-20">
-        <div className="flex flex-col items-start justify-between gap-8 border-b border-borda pb-14 lg:flex-row lg:items-end">
-          <p className="display max-w-2xl text-[clamp(2.25rem,6vw,4rem)]">
+        <div className="flex flex-col items-start justify-between gap-6 border-b border-borda pb-10 sm:gap-8 sm:pb-14 lg:flex-row lg:items-end">
+          <p className="display max-w-2xl text-[clamp(1.9rem,8vw,4rem)]">
             Bateu a fome?{" "}
             <span className="text-brasa">A chapa já está quente.</span>
           </p>
@@ -20,13 +20,13 @@ export function Rodape() {
             href={contato.lojaOnlineUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="shrink-0 bg-brasa px-8 py-5 text-sm font-bold tracking-widest text-carvao uppercase transition-colors hover:bg-brasa-viva"
+            className="shrink-0 bg-brasa px-6 py-4 text-xs font-bold tracking-wider text-carvao uppercase transition-colors hover:bg-brasa-viva sm:px-8 sm:py-5 sm:text-sm sm:tracking-widest"
           >
             Compre aqui
           </a>
         </div>
 
-        <div className="grid gap-10 pt-12 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-8 pt-10 sm:grid-cols-2 sm:gap-10 sm:pt-12 lg:grid-cols-4">
           <div className="sm:col-span-2 lg:col-span-1">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
@@ -49,7 +49,7 @@ export function Rodape() {
                   href={contato.lojaOnlineUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="transition-colors hover:text-brasa"
+                  className="inline-block py-1 transition-colors hover:text-brasa"
                 >
                   Loja online
                 </a>
@@ -59,7 +59,7 @@ export function Rodape() {
                   href={linkWhatsapp()}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 transition-colors hover:text-brasa"
+                  className="inline-flex items-center gap-2 py-1 transition-colors hover:text-brasa"
                 >
                   <IconeWhatsapp className="size-4" />
                   {contato.telefone}
@@ -76,7 +76,7 @@ export function Rodape() {
                   href={linkInstagram}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 transition-colors hover:text-brasa"
+                  className="inline-flex items-center gap-2 py-1 transition-colors hover:text-brasa"
                 >
                   <IconeInstagram className="size-4" />@{contato.instagram}
                 </a>
@@ -88,17 +88,17 @@ export function Rodape() {
             <h3 className="eyebrow text-fumaca">O site</h3>
             <ul className="mt-4 space-y-3 text-sm text-fumaca">
               <li>
-                <a href="#cardapio" className="transition-colors hover:text-osso">
+                <a href="#cardapio" className="inline-block py-1.5 transition-colors hover:text-osso">
                   Cardápio
                 </a>
               </li>
               <li>
-                <a href="#fotos" className="transition-colors hover:text-osso">
+                <a href="#fotos" className="inline-block py-1.5 transition-colors hover:text-osso">
                   Os lanches
                 </a>
               </li>
               <li>
-                <a href="#salao" className="transition-colors hover:text-osso">
+                <a href="#salao" className="inline-block py-1.5 transition-colors hover:text-osso">
                   O salão
                 </a>
               </li>

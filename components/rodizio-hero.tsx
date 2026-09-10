@@ -86,7 +86,7 @@ export function RodizioHero() {
             onClick={() => setAtual(indice)}
             aria-label={`Ver mídia ${indice + 1} de ${midiasHero.length}`}
             aria-current={indice === atual}
-            className="group h-6 flex-1 cursor-pointer"
+            className="group flex h-9 flex-1 cursor-pointer items-center"
           >
             <span
               className={`block h-0.5 w-full transition-colors ${

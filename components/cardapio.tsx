@@ -13,33 +13,37 @@ const emReais = new Intl.NumberFormat("pt-BR", {
 function Linha({ item, numero }: { item: ItemCardapio; numero: number }) {
   return (
     <li className="group border-b border-borda/70 last:border-0">
-      <div className="flex gap-5 py-6 transition-colors group-hover:bg-carvao-2/60 sm:gap-8 sm:px-4">
-        <span className="mt-1 font-mono text-xs text-fumaca/70 tabular-nums">
+      <div className="flex gap-4 py-4 transition-colors group-hover:bg-carvao-2/60 sm:gap-8 sm:px-4 sm:py-6">
+        {/* O número some no celular: ali cada pixel de largura conta para a
+            descrição não virar uma coluna de cinco linhas. */}
+        <span className="mt-1.5 hidden font-mono text-xs text-fumaca/70 tabular-nums sm:block">
           {String(numero).padStart(2, "0")}
         </span>
 
         <div className="min-w-0 flex-1">
-          <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-            <h3 className="display text-2xl transition-colors group-hover:text-brasa sm:text-3xl">
+          {/* Nome e preço na MESMA linha: no celular o preço em coluna própria
+              espremia a descrição inteira. */}
+          <div className="flex items-baseline justify-between gap-4">
+            <h3 className="display text-xl transition-colors group-hover:text-brasa sm:text-3xl">
               {item.nome}
             </h3>
-            {item.destaque && (
-              <span className="eyebrow text-ambar">Mais pedido</span>
+            {item.preco !== null && (
+              <span className="display shrink-0 text-xl text-osso tabular-nums sm:text-3xl">
+                {emReais.format(item.preco)}
+              </span>
             )}
           </div>
+
+          {item.destaque && (
+            <span className="eyebrow mt-1 block text-ambar">Mais pedido</span>
+          )}
+
           {item.descricao && (
-            <p className="mt-2 max-w-xl text-sm leading-relaxed text-fumaca">
+            <p className="mt-1.5 max-w-xl text-[13px] leading-snug text-fumaca sm:mt-2 sm:text-sm sm:leading-relaxed">
               {item.descricao}
             </p>
           )}
         </div>
-
-        {/* Sem preço confirmado o item aparece sem número — nunca com um falso. */}
-        {item.preco !== null && (
-          <span className="display shrink-0 self-start text-2xl text-osso tabular-nums sm:text-3xl">
-            {emReais.format(item.preco)}
-          </span>
-        )}
       </div>
     </li>
   );
@@ -69,7 +73,7 @@ export function Cardapio() {
           />
         </Revelar>
 
-        <div className="mt-10 grid gap-10 lg:grid-cols-12 lg:gap-14">
+        <div className="mt-8 grid gap-6 sm:mt-10 lg:grid-cols-12 lg:gap-14">
           {/* Categorias: coluna própria no desktop, faixa rolável no celular. */}
           <div className="min-w-0 lg:col-span-3">
             <div
@@ -86,7 +90,7 @@ export function Cardapio() {
                     role="tab"
                     aria-selected={selecionada}
                     onClick={() => setAtiva(item.id)}
-                    className={`shrink-0 border-l-2 px-4 py-3 text-left text-sm font-bold tracking-wide whitespace-nowrap uppercase transition-colors ${
+                    className={`shrink-0 border-l-2 px-3 py-2.5 text-left text-xs font-bold tracking-wide whitespace-nowrap uppercase transition-colors sm:px-4 sm:py-3 sm:text-sm ${
                       selecionada
                         ? "border-brasa bg-carvao-2 text-osso"
                         : "border-transparent text-fumaca hover:text-osso"
@@ -101,7 +105,9 @@ export function Cardapio() {
 
           <div className="min-w-0 lg:col-span-9">
             {categoria.chamada && (
-              <p className="mb-4 text-sm text-fumaca">{categoria.chamada}</p>
+              <p className="mb-3 text-[13px] text-fumaca sm:mb-4 sm:text-sm">
+                {categoria.chamada}
+              </p>
             )}
             <ul>
               {categoria.itens.map((item, indice) => (
@@ -109,8 +115,8 @@ export function Cardapio() {
               ))}
             </ul>
 
-            <div className="mt-10 flex flex-col gap-4 border border-borda bg-carvao-2 p-6 sm:flex-row sm:items-center sm:justify-between">
-              <p className="text-fumaca">
+            <div className="mt-8 flex flex-col gap-4 border border-borda bg-carvao-2 p-5 sm:mt-10 sm:flex-row sm:items-center sm:justify-between sm:p-6">
+              <p className="text-sm text-fumaca sm:text-base">
                 Escolheu? O pedido sai pela loja online em dois minutos.
               </p>
               <a

@@ -38,18 +38,18 @@ export function ComoPedir() {
           />
         </Revelar>
 
-        <div className="mt-12 grid gap-4 lg:grid-cols-3">
+        <div className="mt-8 grid gap-3 sm:mt-12 sm:gap-4 lg:grid-cols-3">
           {canais.map((canal, indice) => {
             const destino = destinoDo(canal.id);
 
             return (
               <Revelar key={canal.id} atraso={indice * 110} className="h-full">
-                <div className="flex h-full flex-col border border-borda bg-carvao-2 p-7 transition-colors hover:border-brasa/60">
-                  <span className="display text-6xl text-borda">
+                <div className="flex h-full flex-col border border-borda bg-carvao-2 p-5 transition-colors hover:border-brasa/60 sm:p-7">
+                  <span className="display text-4xl text-borda sm:text-6xl">
                     {canal.numero}
                   </span>
-                  <h3 className="display mt-5 text-3xl">{canal.titulo}</h3>
-                  <p className="mt-3 flex-1 leading-relaxed text-fumaca">
+                  <h3 className="display mt-3 text-2xl sm:mt-5 sm:text-3xl">{canal.titulo}</h3>
+                  <p className="mt-2 flex-1 text-sm leading-relaxed text-fumaca sm:mt-3 sm:text-base">
                     {canal.texto}
                   </p>
 
@@ -58,7 +58,7 @@ export function ComoPedir() {
                       href={destino}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="group mt-6 inline-flex items-center gap-3 text-sm font-bold tracking-widest text-osso uppercase"
+                      className="group -my-2 mt-3 inline-flex items-center gap-3 py-2 text-xs font-bold tracking-wider text-osso uppercase sm:mt-4 sm:text-sm sm:tracking-widest"
                     >
                       {canal.id === "whatsapp" && (
                         <IconeWhatsapp className="size-4 text-brasa" />
@@ -79,8 +79,8 @@ export function ComoPedir() {
 
         {/* Endereço e horário no mesmo tratamento dos cartões acima — antes
             eram dois textos soltos embaixo de uma linha, e ficava órfão. */}
-        <div className="mt-4 grid gap-4 lg:grid-cols-3">
-          <div className="flex flex-col border border-borda bg-carvao-2 p-7 lg:col-span-2">
+        <div className="mt-3 grid gap-3 sm:mt-4 sm:gap-4 lg:grid-cols-3">
+          <div className="flex flex-col border border-borda bg-carvao-2 p-5 sm:p-7 lg:col-span-2">
             <div className="flex items-center gap-3">
               <IconeMapa className="size-5 text-brasa" />
               <h3 className="eyebrow text-fumaca">Onde estamos</h3>
@@ -88,7 +88,7 @@ export function ComoPedir() {
 
             {endereco ? (
               <>
-                <address className="display mt-4 text-3xl not-italic sm:text-4xl">
+                <address className="display mt-3 text-lg leading-tight not-italic sm:mt-4 sm:text-4xl">
                   {endereco.logradouro && (
                     <>
                       {endereco.logradouro}
@@ -107,7 +107,7 @@ export function ComoPedir() {
                     href={mapa}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group mt-6 inline-flex items-center gap-3 text-sm font-bold tracking-widest text-osso uppercase"
+                    className="group -my-2 mt-3 inline-flex items-center gap-3 py-2 text-xs font-bold tracking-wider text-osso uppercase sm:mt-4 sm:text-sm sm:tracking-widest"
                   >
                     Como chegar
                     <IconeSeta className="size-4 text-brasa transition-transform group-hover:translate-x-1" />
@@ -122,7 +122,7 @@ export function ComoPedir() {
             )}
           </div>
 
-          <div className="flex flex-col border border-borda bg-carvao-2 p-7">
+          <div className="flex flex-col border border-borda bg-carvao-2 p-5 sm:p-7">
             <div className="flex items-center gap-3">
               <IconeRelogio className="size-5 text-brasa" />
               <h3 className="eyebrow text-fumaca">Horário</h3>
@@ -152,7 +152,7 @@ export function ComoPedir() {
                   href={linkInstagram}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group mt-6 inline-flex items-center gap-3 text-sm font-bold tracking-widest text-osso uppercase"
+                  className="group -my-2 mt-3 inline-flex items-center gap-3 py-2 text-xs font-bold tracking-wider text-osso uppercase sm:mt-4 sm:text-sm sm:tracking-widest"
                 >
                   <IconeInstagram className="size-4 text-brasa" />
                   @{contato.instagram}

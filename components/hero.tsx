@@ -8,7 +8,7 @@ export function Hero() {
   return (
     <section
       id="topo"
-      className="relative isolate overflow-hidden pt-28 pb-14 sm:pt-32 lg:pt-40 lg:pb-24"
+      className="relative isolate overflow-hidden pt-24 pb-12 sm:pt-32 lg:pt-40 lg:pb-24"
     >
       {/* Brasa fora de foco atrás do texto: dá temperatura ao preto chapado. */}
       <div
@@ -35,7 +35,7 @@ export function Hero() {
 
           {/* Cada linha vive dentro de um bloco com overflow escondido: é o
               que faz o texto surgir de trás da máscara em vez de só aparecer. */}
-          <h1 className="display mt-6 text-[clamp(3.25rem,11vw,7.5rem)]">
+          <h1 className="display mt-5 text-[clamp(2.6rem,12vw,7.5rem)] sm:mt-6">
             <span className="block overflow-hidden pb-[0.06em]">
               <span className="entra-linha block [animation-delay:90ms]">
                 Na chapa.
@@ -53,17 +53,17 @@ export function Hero() {
             </span>
           </h1>
 
-          <p className="entra mt-7 max-w-xl text-lg leading-relaxed text-fumaca [animation-delay:470ms] sm:text-xl">
+          <p className="entra mt-5 max-w-xl text-base leading-relaxed text-fumaca [animation-delay:470ms] sm:mt-7 sm:text-xl">
             Hambúrguer artesanal de verdade, montado na hora. Peça pelo site,
             pelo WhatsApp ou sente numa mesa.
           </p>
 
-          <div className="entra mt-9 flex flex-col gap-3 [animation-delay:580ms] sm:flex-row sm:items-center">
+          <div className="entra mt-7 flex flex-col gap-3 [animation-delay:580ms] sm:mt-9 sm:flex-row sm:items-center">
             <a
               href={contato.lojaOnlineUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="group inline-flex items-center justify-center gap-3 bg-brasa px-7 py-4 text-sm font-bold tracking-widest text-carvao uppercase transition-colors hover:bg-brasa-viva"
+              className="group inline-flex items-center justify-center gap-3 bg-brasa px-6 py-3.5 text-xs font-bold tracking-wider text-carvao uppercase transition-colors hover:bg-brasa-viva sm:px-7 sm:py-4 sm:text-sm sm:tracking-widest"
             >
               Compre aqui
               <IconeSeta className="size-4 transition-transform group-hover:translate-x-1" />
@@ -72,15 +72,15 @@ export function Hero() {
               href={linkWhatsapp()}
               target="_blank"
               rel="noopener noreferrer"
-              className="group inline-flex items-center justify-center gap-3 border border-borda px-7 py-4 text-sm font-bold tracking-widest text-osso uppercase transition-colors hover:border-osso"
+              className="group inline-flex items-center justify-center gap-3 border border-borda px-6 py-3.5 text-xs font-bold tracking-wider text-osso uppercase transition-colors hover:border-osso sm:px-7 sm:py-4 sm:text-sm sm:tracking-widest"
             >
               <IconeWhatsapp className="size-5" />
               Pedir no WhatsApp
             </a>
           </div>
 
-          <p className="entra mt-7 font-mono text-sm text-fumaca [animation-delay:680ms]">
-            <a href="#cardapio" className="text-osso underline decoration-borda decoration-2 underline-offset-4 transition-colors hover:decoration-brasa">
+          <p className="entra mt-6 font-mono text-xs text-fumaca [animation-delay:680ms] sm:mt-7 sm:text-sm">
+            <a href="#cardapio" className="inline-block py-2 text-osso underline decoration-borda decoration-2 underline-offset-4 transition-colors hover:decoration-brasa">
               Ver o cardápio
             </a>
             <span className="px-3 text-borda" aria-hidden>
@@ -91,7 +91,7 @@ export function Hero() {
               href={linkWhatsapp()}
               target="_blank"
               rel="noopener noreferrer"
-              className="whitespace-nowrap text-osso underline decoration-brasa decoration-2 underline-offset-4"
+              className="inline-block py-2 whitespace-nowrap text-osso underline decoration-brasa decoration-2 underline-offset-4"
             >
               {contato.telefone}
             </a>

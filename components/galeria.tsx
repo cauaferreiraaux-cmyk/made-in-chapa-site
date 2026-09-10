@@ -67,7 +67,7 @@ export function Galeria() {
           />
         </Revelar>
 
-        <div className="mt-10 grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4">
+        <div className="mt-8 grid grid-cols-2 gap-2.5 sm:mt-10 sm:gap-4 lg:grid-cols-4">
           {galeria.map((item, indice) => (
             <Revelar key={item.src} atraso={(indice % 4) * 80}>
               <button

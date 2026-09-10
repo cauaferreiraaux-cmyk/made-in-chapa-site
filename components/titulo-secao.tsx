@@ -15,9 +15,11 @@ export function TituloSecao({
         <IconeChama className="size-4 text-brasa" />
         <span className="eyebrow text-brasa">{olho}</span>
       </div>
-      <h2 className="display mt-4 text-[clamp(2.5rem,7vw,4.75rem)]">{titulo}</h2>
+      <h2 className="display mt-3 text-[clamp(2.1rem,9vw,4.75rem)] sm:mt-4">{titulo}</h2>
       {chamada && (
-        <p className="mt-5 text-lg leading-relaxed text-fumaca">{chamada}</p>
+        <p className="mt-4 text-base leading-relaxed text-fumaca sm:mt-5 sm:text-lg">
+          {chamada}
+        </p>
       )}
     </div>
   );
