@@ -1,101 +1,166 @@
 "use client";
 
-import { useRef } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { galeria } from "@/conteudo/site";
 import { IconeSeta } from "./icones";
 import { Revelar } from "./revelar";
 import { TituloSecao } from "./titulo-secao";
 
 /**
- * Carrossel das fotos da casa.
+ * Fotos da casa em grade uniforme.
  *
- * A rolagem é a nativa do navegador com scroll-snap: funciona no dedo, no
- * trackpad e no teclado sem biblioteca nenhuma, e as setas só empurram essa
- * mesma rolagem. Todos os quadros têm o mesmo tamanho, em paisagem — as fotos
- * são verticais e entram recortadas pelo centro.
+ * Todos os quadros têm o mesmo tamanho e a MESMA proporção das fotos originais
+ * (retrato 3:4) — é isso que garante que nada seja cortado. Forçar paisagem
+ * cortava o topo e a base de cada lanche.
+ *
+ * Clicar abre a foto inteira em tela cheia, aí sim sem recorte nenhum.
  */
 export function Galeria() {
-  const faixaRef = useRef<HTMLDivElement>(null);
+  const [aberta, setAberta] = useState<number | null>(null);
+
+  const fechar = useCallback(() => setAberta(null), []);
+  const navegar = useCallback((passo: 1 | -1) => {
+    setAberta((atual) => {
+      if (atual === null) return atual;
+      return (atual + passo + galeria.length) % galeria.length;
+    });
+  }, []);
+
+  useEffect(() => {
+    if (aberta === null) return;
+
+    const aoTeclar = (evento: KeyboardEvent) => {
+      if (evento.key === "Escape") fechar();
+      if (evento.key === "ArrowRight") navegar(1);
+      if (evento.key === "ArrowLeft") navegar(-1);
+    };
+
+    // Trava a rolagem do fundo enquanto a foto está aberta.
+    const overflowAnterior = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", aoTeclar);
+
+    return () => {
+      document.body.style.overflow = overflowAnterior;
+      window.removeEventListener("keydown", aoTeclar);
+    };
+  }, [aberta, fechar, navegar]);
 
   if (galeria.length === 0) return null;
 
-  const deslizar = (sentido: 1 | -1) => {
-    const faixa = faixaRef.current;
-    if (!faixa) return;
-    // um quadro por clique, medido no primeiro slide (o gap entra junto)
-    const primeiro = faixa.firstElementChild as HTMLElement | null;
-    const passo = primeiro ? primeiro.offsetWidth + 16 : faixa.clientWidth * 0.8;
-    faixa.scrollBy({ left: passo * sentido, behavior: "smooth" });
-  };
+  const foto = aberta === null ? null : galeria[aberta];
 
   return (
     <section id="fotos" className="scroll-mt-24 py-16 sm:py-28">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <Revelar>
-          <div className="flex flex-wrap items-end justify-between gap-6">
-            <TituloSecao
-              olho="Os lanches"
-              titulo={
-                <>
-                  Sem <span className="text-brasa">retoque</span>
-                </>
-              }
-              chamada="Foto do que sai da chapa aqui, no salão da casa."
-            />
+          <TituloSecao
+            olho="Os lanches"
+            titulo={
+              <>
+                Sem <span className="text-brasa">retoque</span>
+              </>
+            }
+            chamada="Foto do que sai da chapa aqui, no salão da casa. Clique para ver de perto."
+          />
+        </Revelar>
 
-            <div className="flex gap-2">
+        <div className="mt-10 grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4">
+          {galeria.map((item, indice) => (
+            <Revelar key={item.src} atraso={(indice % 4) * 80}>
               <button
                 type="button"
-                onClick={() => deslizar(-1)}
-                aria-label="Ver fotos anteriores"
-                className="flex size-12 items-center justify-center border border-borda text-osso transition-colors hover:border-brasa hover:text-brasa"
+                onClick={() => setAberta(indice)}
+                aria-label={`Ampliar foto: ${item.alt}`}
+                className="group relative block aspect-3/4 w-full cursor-zoom-in overflow-hidden border border-borda bg-carvao-2"
+              >
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={item.src}
+                  alt={item.alt}
+                  width={item.largura}
+                  height={item.altura}
+                  loading={indice < 4 ? "eager" : "lazy"}
+                  decoding="async"
+                  className="size-full object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+                {item.legenda && (
+                  <span className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-carvao via-carvao/70 to-transparent p-3 pt-10 text-left">
+                    <span className="display text-base text-osso sm:text-lg">
+                      {item.legenda}
+                    </span>
+                  </span>
+                )}
+              </button>
+            </Revelar>
+          ))}
+        </div>
+      </div>
+
+      {foto && (
+        <div
+          role="dialog"
+          aria-modal="true"
+          aria-label={foto.alt}
+          onClick={fechar}
+          className="fixed inset-0 z-60 flex items-center justify-center bg-carvao/95 p-4 backdrop-blur-sm sm:p-8"
+        >
+          {/* object-contain: aqui a foto aparece inteira, sem cortar nada */}
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={foto.src}
+            alt={foto.alt}
+            width={foto.largura}
+            height={foto.altura}
+            onClick={(evento) => evento.stopPropagation()}
+            // w-auto/h-auto para a caixa ficar do tamanho exato da foto: se ela
+            // sobrar, o clique na área vazia não fecharia o visualizador.
+            className="h-auto max-h-[86vh] w-auto max-w-full object-contain"
+          />
+
+          <button
+            type="button"
+            onClick={fechar}
+            aria-label="Fechar"
+            className="absolute top-4 right-4 flex size-12 items-center justify-center border border-borda text-osso transition-colors hover:border-brasa hover:text-brasa sm:top-6 sm:right-6"
+          >
+            <span aria-hidden className="text-2xl leading-none">
+              ×
+            </span>
+          </button>
+
+          {galeria.length > 1 && (
+            <>
+              <button
+                type="button"
+                onClick={(evento) => {
+                  evento.stopPropagation();
+                  navegar(-1);
+                }}
+                aria-label="Foto anterior"
+                className="absolute left-2 flex size-12 items-center justify-center border border-borda bg-carvao/70 text-osso transition-colors hover:border-brasa hover:text-brasa sm:left-6"
               >
                 <IconeSeta className="size-5 rotate-180" />
               </button>
               <button
                 type="button"
-                onClick={() => deslizar(1)}
-                aria-label="Ver próximas fotos"
-                className="flex size-12 items-center justify-center border border-borda text-osso transition-colors hover:border-brasa hover:text-brasa"
+                onClick={(evento) => {
+                  evento.stopPropagation();
+                  navegar(1);
+                }}
+                aria-label="Próxima foto"
+                className="absolute right-2 flex size-12 items-center justify-center border border-borda bg-carvao/70 text-osso transition-colors hover:border-brasa hover:text-brasa sm:right-6"
               >
                 <IconeSeta className="size-5" />
               </button>
-            </div>
-          </div>
-        </Revelar>
-      </div>
+            </>
+          )}
 
-      {/* A faixa sangra até a borda da tela: o quadro cortado à direita é o que
-          conta para o visitante que ainda há foto para o lado. */}
-      <div
-        ref={faixaRef}
-        className="sem-barra mt-10 flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-smooth px-5 pb-2 sm:px-8"
-      >
-        {galeria.map((foto, indice) => (
-          <figure
-            key={foto.src}
-            className="group relative aspect-video w-[86%] shrink-0 snap-center overflow-hidden border border-borda bg-carvao-2 sm:w-[60%] lg:w-[42%]"
-          >
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src={foto.src}
-              alt={foto.alt}
-              width={foto.largura}
-              height={foto.altura}
-              loading={indice < 2 ? "eager" : "lazy"}
-              decoding="async"
-              className="size-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
-            />
-            {foto.legenda && (
-              <figcaption className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-carvao via-carvao/70 to-transparent p-4 pt-10">
-                <span className="display text-lg text-osso sm:text-xl">
-                  {foto.legenda}
-                </span>
-              </figcaption>
-            )}
-          </figure>
-        ))}
-      </div>
+          <p className="absolute bottom-5 left-1/2 -translate-x-1/2 font-mono text-xs text-fumaca tabular-nums">
+            {(aberta ?? 0) + 1} / {galeria.length}
+          </p>
+        </div>
+      )}
     </section>
   );
 }
