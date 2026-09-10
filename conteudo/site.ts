@@ -281,12 +281,6 @@ export const cardapio: CategoriaCardapio[] = [
           "Nuggets de frango, crocantes por fora e suculentos por dentro (12 unidades).",
         preco: null,
       },
-      {
-        nome: "Porção churrasco",
-        descricao:
-          "Contrafilé, linguiça calabresa, frango, batata e anéis de cebola.",
-        preco: 144.90,
-      },
     ],
   },
   {
