@@ -1,36 +1,65 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Site Made in Chapa
 
-## Getting Started
+Site institucional da hamburgueria: cardápio, fotos, salão e os caminhos para pedir
+(loja online, WhatsApp e balcão). Página única, estática, sem backend.
 
-First, run the development server:
+Não confundir com o **sistema financeiro** (`../made-in-chapa-v2`), que é outro produto,
+outro repositório e outro domínio.
+
+## Rodar
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev -- --port 3100
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+A porta 3100 é proposital: a 3000 costuma estar ocupada pelo dev do sistema financeiro.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Não há `.env` — o site não fala com banco nem com serviço externo. Todo o conteúdo está
+em [`conteudo/site.ts`](./conteudo/site.ts).
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Verificar antes de publicar
 
-## Learn More
+```bash
+npx tsc --noEmit
+npx eslint .
+npm run build
+```
 
-To learn more about Next.js, take a look at the following resources:
+## Publicar na VPS
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+O site é estático: `npm run build` gera `out/`, que é copiado para a VPS por `rsync`.
+**Não sobe processo Node** — não disputa memória com o sistema financeiro, e se o site
+sair do ar o financeiro nem sente.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+./deploy/publicar.sh
+```
 
-## Deploy on Vercel
+Primeira vez (nginx + certificado), ver [`deploy/README.md`](./deploy/README.md).
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Estrutura
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```
+conteudo/site.ts   ← TODO o texto, preço, foto e contato. Comece por aqui.
+lib/links.ts       ← montagem dos links (WhatsApp, mapa)
+components/        ← uma seção por arquivo
+app/globals.css    ← paleta e tipografia da marca
+public/img/        ← fotos (webp)
+public/video/      ← vídeos do rodízio do topo (mp4, sem áudio)
+public/marca/      ← logo em svg
+deploy/            ← nginx e script de publicação
+PENDENTE.md        ← o que ainda falta de conteúdo real
+```
+
+## Decisões
+
+- **Estático, não servidor.** O site não tem nada dinâmico; export estático é mais barato,
+  mais rápido e não acrescenta um processo para cuidar na VPS.
+- **Dado que não existe não é inventado.** Campo `null` não vira placeholder na tela:
+  simplesmente não é desenhado. Os preços atuais são exceção consciente e assumida —
+  aparecem com aviso de "valores de exemplo" enquanto `PRECOS_SAO_EXEMPLO` for `true`.
+- **A paleta veio do material impresso da casa** (cardápio preto, logo branco), não de
+  gosto pessoal. O acento amarelo é a luz da tenda do salão.
+- **Sem biblioteca de UI.** São nove componentes; um design system aqui pesaria mais do
+  que ajudaria.

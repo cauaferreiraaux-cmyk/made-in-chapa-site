@@ -1,26 +1,168 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* ╔════════════════════════════════════════════════════════════════════╗
+   ║  Made in Chapa — sistema visual do site                            ║
+   ║                                                                    ║
+   ║  A paleta não foi escolhida no olho: veio do material impresso da  ║
+   ║  casa. O cardápio da mesa é preto com texto branco e os preços em  ║
+   ║  badge vermelho; o logo oficial é branco sobre #222. Daí carvão +  ║
+   ║  osso + brasa. O âmbar é a luz pendurada da tenda do salão.        ║
+   ╚════════════════════════════════════════════════════════════════════╝ */
+
+@theme {
+  /* superfícies, do fundo para a frente */
+  --color-carvao: #0b0a09;
+  --color-carvao-2: #121110;
+  --color-carvao-3: #1a1816;
+  --color-borda: #2b2724;
+
+  /* texto */
+  --color-osso: #f4f1ec;
+  --color-fumaca: #9c948a;
+
+  /* acentos — brasa manda no CTA e no preço; âmbar é o detalhe mais quente.
+     Amarelo sobre carvão passa folgado em contraste; por isso o texto DENTRO
+     de um botão amarelo é carvão, nunca osso. */
+  --color-brasa: #d99a12;
+  --color-brasa-viva: #f2b02a;
+  --color-ambar: #e0762a;
+
+  --font-display: var(--fonte-display), "Arial Narrow", sans-serif;
+  --font-sans: var(--fonte-corpo), system-ui, sans-serif;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
+  /* Trava de segurança: nada de barra horizontal se um enfeite escapar.
+     `clip` em vez de `hidden` porque `hidden` cria contexto de rolagem e
+     estraga o cabeçalho fixo. */
+  overflow-x: clip;
+  /* o cabeçalho fixo não pode cobrir o título da seção ao pular por âncora */
+  scroll-padding-top: 5rem;
+  background-color: var(--color-carvao);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-carvao);
+  color: var(--color-osso);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+::selection {
+  background-color: var(--color-brasa);
+  color: var(--color-carvao);
+}
+
+/* Foco visível de verdade — o site é escuro, o anel precisa gritar. */
+:focus-visible {
+  outline: 2px solid var(--color-ambar);
+  outline-offset: 3px;
+}
+
+/* ── títulos ─────────────────────────────────────────────────────────
+   Anton só existe em um peso; o caráter vem do tamanho e do tracking
+   negativo. Em caixa alta, sem tracking apertado, ela fica frouxa.     */
+.display {
+  font-family: var(--font-display);
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  line-height: 0.88;
+}
+
+/* Rótulo pequeno em versalete espaçado — usado como "olho" de seção. */
+.eyebrow {
+  font-size: 0.6875rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+/* Texto vazado, só contorno. Dá o ritmo cheio/vazio da faixa rolante. */
+.vazado {
+  color: transparent;
+  -webkit-text-stroke: 1px var(--color-fumaca);
+}
+
+/* Faixa que rola no dedo sem mostrar a barra — a barra cinza no meio da
+   página estraga o acabamento, e o corte lateral já sinaliza que há mais. */
+.sem-barra {
+  scrollbar-width: none;
+}
+.sem-barra::-webkit-scrollbar {
+  display: none;
+}
+
+/* ── textura ─────────────────────────────────────────────────────────
+   Grão sutil por cima do fundo. Sem isso o preto chapado fica de tela
+   de app, não de casa de hambúrguer.                                   */
+.grao::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.5;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='0.35'/%3E%3C/svg%3E");
+}
+
+/* Brilho de brasa atrás de um elemento. */
+.brasa-glow {
+  background-image: radial-gradient(
+    60% 60% at 50% 50%,
+    color-mix(in oklab, var(--color-brasa) 45%, transparent),
+    transparent 70%
+  );
+}
+
+/* ── movimento ───────────────────────────────────────────────────── */
+
+@keyframes revelar {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* O elemento nasce invisível e só anima quando o observador marca
+   data-visivel — assim nada "pisca" antes de entrar na tela. */
+.revelar {
+  opacity: 0;
+}
+.revelar[data-visivel="true"] {
+  animation: revelar 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes rolar {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    /* -50% porque o conteúdo é duplicado: o corte fica imperceptível. */
+    transform: translateX(-50%);
+  }
+}
+
+.faixa-rolante {
+  animation: rolar 38s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .revelar,
+  .revelar[data-visivel="true"] {
+    opacity: 1;
+    animation: none;
+  }
+  .faixa-rolante {
+    animation: none;
+  }
 }
