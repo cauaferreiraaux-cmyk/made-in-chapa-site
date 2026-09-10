@@ -34,7 +34,12 @@ export function Cabecalho() {
   }, [menuAberto]);
 
   return (
-    <header
+    <>
+      {/* O painel do menu é IRMÃO do cabeçalho, não filho. O cabeçalho usa
+          backdrop-blur, e backdrop-filter cria bloco de contenção: um
+          `position: fixed` lá dentro passa a se medir pelo cabeçalho (64px de
+          altura) em vez da tela, e o menu abria com 1px. */}
+      <header
       className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${
         rolou || menuAberto
           ? "border-b border-borda bg-carvao/92 backdrop-blur-md"
@@ -109,24 +114,29 @@ export function Cabecalho() {
         </div>
       </div>
 
+      </header>
+
+      {/* Tela cheia de verdade: do fim do cabeçalho até a base, fundo opaco.
+          Antes tinha só a altura do próprio conteúdo e o topo do site aparecia
+          por baixo, com os botões do hero duplicando os do menu. */}
       {menuAberto && (
         <nav
           id="menu-celular"
-          className="border-t border-borda bg-carvao lg:hidden"
+          className="fixed inset-x-0 top-16 bottom-0 z-40 overflow-y-auto border-t border-borda bg-carvao sm:top-20 lg:hidden"
         >
-          <ul className="mx-auto max-w-7xl px-5 py-4 sm:px-8">
+          <ul className="mx-auto flex min-h-full max-w-7xl flex-col justify-center px-5 py-8 sm:px-8">
             {secoes.map((secao) => (
-              <li key={secao.href} className="border-b border-borda/60 last:border-0">
+              <li key={secao.href} className="border-b border-borda/60">
                 <a
                   href={secao.href}
                   onClick={() => setMenuAberto(false)}
-                  className="display block py-4 text-3xl text-osso"
+                  className="display block py-5 text-4xl text-osso transition-colors hover:text-brasa"
                 >
                   {secao.rotulo}
                 </a>
               </li>
             ))}
-            <li className="grid gap-3 pt-5">
+            <li className="grid gap-3 pt-8">
               <a
                 href={contato.lojaOnlineUrl}
                 target="_blank"
@@ -148,6 +158,6 @@ export function Cabecalho() {
           </ul>
         </nav>
       )}
-    </header>
+    </>
   );
 }
