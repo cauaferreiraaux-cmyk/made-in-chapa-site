@@ -31,7 +31,7 @@ export function Hero() {
             No desktop volta a ser um bloco só na coluna da esquerda. */}
         <div className="sobre-midia relative z-10 flex min-h-[100dvh] flex-col justify-between pt-24 pb-9 lg:col-span-7 lg:block lg:min-h-0 lg:pt-0 lg:pb-0">
           <div>
-            <div className="entra flex flex-wrap items-center gap-3">
+            <div className="entra flex flex-wrap items-center justify-center gap-3 lg:justify-start">
             <span className="eyebrow text-brasa">Hamburgueria</span>
             <span className="h-px w-10 bg-borda" aria-hidden />
             <span className="eyebrow text-fumaca">Delivery e salão</span>
