@@ -8,7 +8,7 @@ export function Hero() {
   return (
     <section
       id="topo"
-      className="relative isolate flex min-h-[100dvh] items-start overflow-hidden pt-[23vh] pb-28 sm:pt-32 lg:min-h-0 lg:items-center lg:pt-40 lg:pb-24"
+      className="relative isolate min-h-[100dvh] overflow-hidden lg:min-h-0 lg:pt-40 lg:pb-24"
     >
       {/* Brasa fora de foco atrás do texto: dá temperatura ao preto chapado. */}
       <div
@@ -25,13 +25,18 @@ export function Hero() {
       />
 
       <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-12 px-5 sm:px-8 lg:grid-cols-12 lg:gap-8">
-        <div className="sobre-midia relative z-10 lg:col-span-7">
-          <div className="entra flex flex-wrap items-center gap-3">
+        {/* No celular o conteúdo se divide em dois: identidade e título colados
+            no topo, e a conversa de pedido colada na base. O meio fica livre
+            para o lanche — que é o motivo de a mídia estar ali atrás.
+            No desktop volta a ser um bloco só na coluna da esquerda. */}
+        <div className="sobre-midia relative z-10 flex min-h-[100dvh] flex-col justify-between pt-24 pb-9 lg:col-span-7 lg:block lg:min-h-0 lg:pt-0 lg:pb-0">
+          <div>
+            <div className="entra flex flex-wrap items-center gap-3">
             <span className="eyebrow text-brasa">Hamburgueria</span>
             <span className="h-px w-10 bg-borda" aria-hidden />
             <span className="eyebrow text-fumaca">Delivery e salão</span>
-            <StatusLoja />
-          </div>
+              <StatusLoja />
+            </div>
 
           {/* Cada linha vive dentro de um bloco com overflow escondido: é o
               que faz o texto surgir de trás da máscara em vez de só aparecer. */}
@@ -51,9 +56,11 @@ export function Hero() {
                 No ponto.
               </span>
             </span>
-          </h1>
+            </h1>
+          </div>
 
-          <p className="entra mt-4 max-w-xl text-sm leading-relaxed text-osso/75 [animation-delay:470ms] sm:mt-7 sm:text-xl sm:text-fumaca">
+          <div>
+            <p className="entra max-w-xl text-sm leading-relaxed text-osso/75 [animation-delay:470ms] sm:mt-7 sm:text-xl sm:text-fumaca">
             Hambúrguer artesanal de verdade, montado na hora. Peça pelo site,
             pelo WhatsApp ou sente numa mesa.
           </p>
@@ -93,9 +100,10 @@ export function Hero() {
               rel="noopener noreferrer"
               className="inline-block py-2 whitespace-nowrap text-osso underline decoration-brasa decoration-2 underline-offset-4"
             >
-              {contato.telefone}
-            </a>
-          </p>
+                {contato.telefone}
+              </a>
+            </p>
+          </div>
         </div>
 
         {/* O quadro entra deslocado e alto: quebra o eixo central e evita o
@@ -111,7 +119,7 @@ export function Hero() {
               Forte embaixo, onde está o texto, e quase limpo no topo, para o
               lanche continuar aparecendo — que é o motivo de ele estar ali. */}
           <div
-            className="pointer-events-none absolute inset-0 bg-gradient-to-b from-carvao/60 via-carvao/80 via-35% to-carvao/25 lg:hidden"
+            className="pointer-events-none absolute inset-0 bg-gradient-to-b from-carvao/80 via-carvao/25 via-50% to-carvao/85 lg:hidden"
             aria-hidden
           />
         </div>

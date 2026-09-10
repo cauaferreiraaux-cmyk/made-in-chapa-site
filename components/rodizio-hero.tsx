@@ -119,7 +119,7 @@ export function RodizioHero() {
 
       {/* Barras de posição, dentro do quadro — antes era uma etiqueta solta
           que sangrava para fora do container. */}
-      <div className="absolute inset-x-0 bottom-0 z-20 flex items-center gap-2 px-5 pb-6 lg:px-4 lg:pb-4">
+      <div className="absolute inset-x-0 bottom-0 z-20 hidden items-center gap-2 px-5 pb-6 lg:flex lg:px-4 lg:pb-4">
         {midiasHero.map((midia, indice) => (
           <button
             key={midia.src}
