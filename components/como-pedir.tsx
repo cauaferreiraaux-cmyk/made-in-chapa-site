@@ -88,16 +88,22 @@ export function ComoPedir() {
 
             {endereco ? (
               <>
-                <address className="display mt-3 text-lg leading-tight not-italic sm:mt-4 sm:text-4xl">
-                  {endereco.logradouro && (
-                    <>
-                      {endereco.logradouro}
-                      <br />
-                    </>
-                  )}
-                  {endereco.bairro}
-                  <span className="text-fumaca"> · </span>
-                  {endereco.cidade}/{endereco.uf}
+                {/* Endereço NÃO usa a display: Anton em caixa alta é fonte de
+                    título — num endereço de duas linhas fica amassado e custa
+                    para ler. Aqui o que importa é a pessoa achar a casa. */}
+                <address className="mt-4 not-italic">
+                  <span className="block text-base leading-snug font-semibold text-osso sm:text-2xl">
+                    {endereco.logradouro ?? `${endereco.bairro}`}
+                  </span>
+                  <span className="mt-1 block text-base leading-snug text-fumaca sm:text-lg">
+                    {endereco.logradouro && <>{endereco.bairro} · </>}
+                    {endereco.cidade}/{endereco.uf}
+                    {endereco.cep && (
+                      <span className="block text-sm sm:mt-0.5">
+                        CEP {endereco.cep}
+                      </span>
+                    )}
+                  </span>
                 </address>
                 {!endereco.logradouro && (
                   <Pendente>rua e número, para o endereço completo</Pendente>
@@ -133,10 +139,10 @@ export function ComoPedir() {
                 {horarios.map((faixa) => (
                   <div
                     key={faixa.rotulo}
-                    className="flex justify-between gap-6 border-b border-borda/60 pb-2 text-fumaca last:border-0"
+                    className="flex items-baseline justify-between gap-4 border-b border-borda/60 pb-2 text-sm text-fumaca last:border-0 sm:text-base"
                   >
                     <dt>{faixa.rotulo}</dt>
-                    <dd className="font-mono text-osso tabular-nums">
+                    <dd className="shrink-0 font-mono text-xs whitespace-nowrap text-osso tabular-nums sm:text-sm">
                       {faixa.abre} às {faixa.fecha}
                     </dd>
                   </div>
