@@ -8,7 +8,7 @@ export function Hero() {
   return (
     <section
       id="topo"
-      className="relative isolate flex min-h-[100dvh] items-center overflow-hidden pt-24 pb-20 sm:pt-32 lg:min-h-0 lg:block lg:pt-40 lg:pb-24"
+      className="relative isolate flex min-h-[100dvh] items-start overflow-hidden pt-[23vh] pb-28 sm:pt-32 lg:min-h-0 lg:items-center lg:pt-40 lg:pb-24"
     >
       {/* Brasa fora de foco atrás do texto: dá temperatura ao preto chapado. */}
       <div
@@ -25,7 +25,7 @@ export function Hero() {
       />
 
       <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-12 px-5 sm:px-8 lg:grid-cols-12 lg:gap-8">
-        <div className="relative z-10 lg:col-span-7">
+        <div className="sobre-midia relative z-10 lg:col-span-7">
           <div className="entra flex flex-wrap items-center gap-3">
             <span className="eyebrow text-brasa">Hamburgueria</span>
             <span className="h-px w-10 bg-borda" aria-hidden />
@@ -79,7 +79,7 @@ export function Hero() {
             </a>
           </div>
 
-          <p className="entra mt-4 font-mono text-xs text-fumaca [animation-delay:680ms] sm:mt-7 sm:text-sm">
+          <p className="entra mt-4 font-mono text-xs text-osso/80 [animation-delay:680ms] sm:mt-7 sm:text-sm sm:text-fumaca">
             <a href="#cardapio" className="inline-block py-2 text-osso underline decoration-borda decoration-2 underline-offset-4 transition-colors hover:decoration-brasa">
               Ver o cardápio
             </a>
@@ -111,7 +111,7 @@ export function Hero() {
               Forte embaixo, onde está o texto, e quase limpo no topo, para o
               lanche continuar aparecendo — que é o motivo de ele estar ali. */}
           <div
-            className="pointer-events-none absolute inset-0 bg-gradient-to-t from-carvao from-10% via-carvao/80 via-50% to-carvao/15 lg:hidden"
+            className="pointer-events-none absolute inset-0 bg-gradient-to-b from-carvao/60 via-carvao/80 via-35% to-carvao/25 lg:hidden"
             aria-hidden
           />
         </div>
