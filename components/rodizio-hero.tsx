@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { midiasHero } from "@/conteudo/site";
 
 /**
@@ -13,6 +13,46 @@ import { midiasHero } from "@/conteudo/site";
 export function RodizioHero() {
   const [atual, setAtual] = useState(0);
   const [pausado, setPausado] = useState(false);
+  const caixaRef = useRef<HTMLDivElement>(null);
+
+  /**
+   * Manda tocar o vídeo da peça ativa.
+   *
+   * O atributo `autoplay` sozinho não basta no iPhone: em Modo de Baixo
+   * Consumo o iOS recusa a reprodução automática, e o vídeo fica parado com o
+   * botão nativo por cima. Chamar play() na troca de peça e de novo no
+   * primeiro toque da pessoa recupera na maioria dos casos — e quando o
+   * sistema recusa mesmo, o poster continua ali, então nunca fica um buraco.
+   */
+  const tocarAtivo = useCallback(() => {
+    const caixa = caixaRef.current;
+    if (!caixa) return;
+
+    caixa.querySelectorAll("video").forEach((video, indice) => {
+      if (indice === atual) {
+        const tentativa = video.play();
+        // navegador que recusa devolve promessa rejeitada; ignorar é o certo
+        if (tentativa) tentativa.catch(() => {});
+      } else {
+        video.pause();
+      }
+    });
+  }, [atual]);
+
+  useEffect(() => {
+    tocarAtivo();
+  }, [tocarAtivo]);
+
+  // Primeiro gesto na página: o iOS passa a permitir o que recusou antes.
+  useEffect(() => {
+    const aoTocar = () => tocarAtivo();
+    window.addEventListener("touchstart", aoTocar, { once: true, passive: true });
+    window.addEventListener("click", aoTocar, { once: true });
+    return () => {
+      window.removeEventListener("touchstart", aoTocar);
+      window.removeEventListener("click", aoTocar);
+    };
+  }, [tocarAtivo]);
 
   useEffect(() => {
     const semMovimento = window.matchMedia(
@@ -29,7 +69,8 @@ export function RodizioHero() {
 
   return (
     <div
-      className="relative aspect-9/14 w-full overflow-hidden border border-borda bg-carvao-2"
+      ref={caixaRef}
+      className="relative size-full overflow-hidden bg-carvao-2 lg:aspect-9/14 lg:h-auto lg:border lg:border-borda"
       onMouseEnter={() => setPausado(true)}
       onMouseLeave={() => setPausado(false)}
     >
@@ -53,7 +94,7 @@ export function RodizioHero() {
                 muted
                 loop
                 playsInline
-                preload={indice === 0 ? "auto" : "none"}
+                preload={indice === 0 ? "auto" : "metadata"}
                 aria-label={midia.alt}
               />
             ) : (
@@ -72,13 +113,13 @@ export function RodizioHero() {
 
       {/* Escurece a base para os controles e a borda do quadro não sumirem. */}
       <div
-        className="pointer-events-none absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-carvao to-transparent"
+        className="pointer-events-none absolute inset-x-0 bottom-0 hidden h-32 bg-gradient-to-t from-carvao to-transparent lg:block"
         aria-hidden
       />
 
       {/* Barras de posição, dentro do quadro — antes era uma etiqueta solta
           que sangrava para fora do container. */}
-      <div className="absolute inset-x-0 bottom-0 flex items-center gap-2 p-4">
+      <div className="absolute inset-x-0 bottom-0 z-20 flex items-center gap-2 px-5 pb-6 lg:px-4 lg:pb-4">
         {midiasHero.map((midia, indice) => (
           <button
             key={midia.src}

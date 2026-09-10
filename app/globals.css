@@ -27,6 +27,10 @@
   --color-brasa-viva: #f2b02a;
   --color-ambar: #e0762a;
 
+  /* Único verde do site, e só para o selo de "aberto": é o sinal universal
+     de porta aberta, e o âmbar da marca não comunica isso. */
+  --color-aberto: #3fbf5f;
+
   --font-display: var(--fonte-display), "Arial Narrow", sans-serif;
   --font-sans: var(--fonte-corpo), system-ui, sans-serif;
 }
@@ -71,10 +75,11 @@ body {
   font-weight: 400;
   text-transform: uppercase;
   letter-spacing: -0.02em;
-  /* 0.88 era mais apertado e bonito em título sem acento, mas em português
-     título tem Ê, Á, Ó — e o acento da linha de baixo encostava na de cima.
-     0.95 mantém o bloco condensado e resolve para qualquer texto. */
-  line-height: 0.95;
+  /* Em português título tem Ê, Á, Ó, e a Anton põe o acento acima da caixa da
+     linha. Com 0.88 ele invadia a linha de cima; com 0.95 ainda encostava em
+     tela estreita, onde o título quebra mais. 1.02 é o primeiro valor em que
+     nenhuma combinação encosta, e o bloco continua condensado. */
+  line-height: 1.02;
 }
 
 /* Rótulo pequeno em versalete espaçado — usado como "olho" de seção. */
@@ -296,6 +301,41 @@ body::before {
   }
 }
 
+/* A luz do selo "aberto" pulsa como um letreiro de porta aberta: o ponto
+   respira e solta um anel que se abre e some. É o único elemento do site que
+   pisca — por isso funciona; se tudo piscasse, nada chamaria atenção. */
+@keyframes pulsarLuz {
+  0% {
+    box-shadow: 0 0 0 0 color-mix(in oklab, var(--color-aberto) 65%, transparent);
+    opacity: 1;
+  }
+  70% {
+    box-shadow: 0 0 0 9px color-mix(in oklab, var(--color-aberto) 0%, transparent);
+    opacity: 0.75;
+  }
+  100% {
+    box-shadow: 0 0 0 0 color-mix(in oklab, var(--color-aberto) 0%, transparent);
+    opacity: 1;
+  }
+}
+
+.luz-aberto {
+  animation: pulsarLuz 2.2s ease-out infinite;
+}
+
+/* No celular a mídia é o fundo da tela toda e passa por trás do véu: sem uma
+   ajuda de brilho e cor, o lanche chega apagado justo na primeira impressão. */
+@media (max-width: 1023px) {
+  .midia-fundo video,
+  .midia-fundo img {
+    filter: brightness(1.16) saturate(1.12) contrast(1.04);
+    /* Os vídeos são verticais e o lanche vive no terço de baixo do quadro.
+       Preenchendo a tela pelo centro, aparecia a bancada e o fundo da cozinha
+       — justamente o que não interessa. Puxa o recorte para baixo. */
+    object-position: center 72%;
+  }
+}
+
 @keyframes revelar {
   from {
     opacity: 0;
@@ -343,6 +383,9 @@ body::before {
     animation: none;
   }
   body::after {
+    animation: none;
+  }
+  .luz-aberto {
     animation: none;
   }
   /* as animações de entrada nem chegam a ser declaradas aqui: vivem só

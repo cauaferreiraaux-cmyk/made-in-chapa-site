@@ -8,7 +8,7 @@ export function Hero() {
   return (
     <section
       id="topo"
-      className="relative isolate overflow-hidden pt-24 pb-12 sm:pt-32 lg:pt-40 lg:pb-24"
+      className="relative isolate flex min-h-[100dvh] items-center overflow-hidden pt-24 pb-20 sm:pt-32 lg:min-h-0 lg:block lg:pt-40 lg:pb-24"
     >
       {/* Brasa fora de foco atrás do texto: dá temperatura ao preto chapado. */}
       <div
@@ -25,7 +25,7 @@ export function Hero() {
       />
 
       <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-12 px-5 sm:px-8 lg:grid-cols-12 lg:gap-8">
-        <div className="lg:col-span-7">
+        <div className="relative z-10 lg:col-span-7">
           <div className="entra flex flex-wrap items-center gap-3">
             <span className="eyebrow text-brasa">Hamburgueria</span>
             <span className="h-px w-10 bg-borda" aria-hidden />
@@ -35,7 +35,7 @@ export function Hero() {
 
           {/* Cada linha vive dentro de um bloco com overflow escondido: é o
               que faz o texto surgir de trás da máscara em vez de só aparecer. */}
-          <h1 className="display mt-5 text-[clamp(2.6rem,12vw,7.5rem)] sm:mt-6">
+          <h1 className="display mt-4 text-[clamp(2.1rem,8.5vw,7.5rem)] sm:mt-6">
             <span className="block overflow-hidden pb-[0.06em]">
               <span className="entra-linha block [animation-delay:90ms]">
                 Na chapa.
@@ -53,12 +53,12 @@ export function Hero() {
             </span>
           </h1>
 
-          <p className="entra mt-5 max-w-xl text-base leading-relaxed text-fumaca [animation-delay:470ms] sm:mt-7 sm:text-xl">
+          <p className="entra mt-4 max-w-xl text-sm leading-relaxed text-osso/75 [animation-delay:470ms] sm:mt-7 sm:text-xl sm:text-fumaca">
             Hambúrguer artesanal de verdade, montado na hora. Peça pelo site,
             pelo WhatsApp ou sente numa mesa.
           </p>
 
-          <div className="entra mt-7 flex flex-col gap-3 [animation-delay:580ms] sm:mt-9 sm:flex-row sm:items-center">
+          <div className="entra mt-5 flex flex-col gap-2.5 [animation-delay:580ms] sm:mt-9 sm:flex-row sm:items-center sm:gap-3">
             <a
               href={contato.lojaOnlineUrl}
               target="_blank"
@@ -79,7 +79,7 @@ export function Hero() {
             </a>
           </div>
 
-          <p className="entra mt-6 font-mono text-xs text-fumaca [animation-delay:680ms] sm:mt-7 sm:text-sm">
+          <p className="entra mt-4 font-mono text-xs text-fumaca [animation-delay:680ms] sm:mt-7 sm:text-sm">
             <a href="#cardapio" className="inline-block py-2 text-osso underline decoration-borda decoration-2 underline-offset-4 transition-colors hover:decoration-brasa">
               Ver o cardápio
             </a>
@@ -100,10 +100,20 @@ export function Hero() {
 
         {/* O quadro entra deslocado e alto: quebra o eixo central e evita o
             hero simétrico de sempre. */}
-        <div className="relative lg:col-span-5 lg:translate-y-6">
-          <div className="entra-quadro mx-auto w-full max-w-sm [animation-delay:260ms] lg:max-w-none">
+        {/* No celular a mídia é o FUNDO da tela inteira; no desktop volta a ser
+            o quadro da coluna da direita. É o mesmo componente nos dois casos —
+            duplicar significaria carregar os oito vídeos e fotos duas vezes. */}
+        <div className="absolute inset-0 -z-10 lg:relative lg:z-0 lg:col-span-5 lg:translate-y-6">
+          <div className="entra-quadro midia-fundo size-full [animation-delay:260ms] lg:mx-auto lg:w-full lg:max-w-none">
             <RodizioHero />
           </div>
+          {/* Sem véu o título branco cai em cima do queijo derretido e some.
+              Forte embaixo, onde está o texto, e quase limpo no topo, para o
+              lanche continuar aparecendo — que é o motivo de ele estar ali. */}
+          <div
+            className="pointer-events-none absolute inset-0 bg-gradient-to-t from-carvao from-10% via-carvao/80 via-50% to-carvao/15 lg:hidden"
+            aria-hidden
+          />
         </div>
 
       </div>

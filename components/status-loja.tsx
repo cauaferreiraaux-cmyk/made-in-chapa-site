@@ -32,7 +32,7 @@ export function StatusLoja() {
   return (
     <span className="inline-flex items-center gap-2 border border-borda bg-carvao-2/80 px-3 py-1.5 text-xs font-semibold tracking-wide uppercase">
       <span
-        className={`size-2 rounded-full ${aberto ? "bg-ambar" : "bg-fumaca"}`}
+        className={`size-2 rounded-full ${aberto ? "bg-aberto luz-aberto" : "bg-fumaca"}`}
         aria-hidden
       />
       {aberto ? "Aberto agora" : "Fechado agora"}

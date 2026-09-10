@@ -26,24 +26,24 @@ export function Rodape() {
           </a>
         </div>
 
-        <div className="grid gap-8 pt-10 sm:grid-cols-2 sm:gap-10 sm:pt-12 lg:grid-cols-4">
-          <div className="sm:col-span-2 lg:col-span-1">
+        <div className="grid grid-cols-2 gap-x-6 gap-y-6 pt-8 sm:gap-10 sm:pt-12 lg:grid-cols-4">
+          <div className="col-span-2 lg:col-span-1">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="/marca/logo-horizontal-branco.svg"
               alt={marca.nome}
               width={1123}
               height={810}
-              className="h-14 w-auto"
+              className="h-12 w-auto sm:h-14"
             />
-            <p className="mt-4 max-w-xs text-sm leading-relaxed text-fumaca">
+            <p className="mt-3 max-w-xs text-sm leading-relaxed text-fumaca sm:mt-4">
               {marca.resumo}
             </p>
           </div>
 
           <div>
             <h3 className="eyebrow text-fumaca">Pedidos</h3>
-            <ul className="mt-4 space-y-3">
+            <ul className="mt-2 sm:mt-4 sm:space-y-2">
               <li>
                 <a
                   href={contato.lojaOnlineUrl}
@@ -70,7 +70,7 @@ export function Rodape() {
 
           <div>
             <h3 className="eyebrow text-fumaca">Redes</h3>
-            <ul className="mt-4 space-y-3">
+            <ul className="mt-2 sm:mt-4 sm:space-y-2">
               <li>
                 <a
                   href={linkInstagram}
@@ -86,7 +86,7 @@ export function Rodape() {
 
           <div>
             <h3 className="eyebrow text-fumaca">O site</h3>
-            <ul className="mt-4 space-y-3 text-sm text-fumaca">
+            <ul className="mt-2 text-sm text-fumaca sm:mt-4 sm:space-y-2">
               <li>
                 <a href="#cardapio" className="inline-block py-1.5 transition-colors hover:text-osso">
                   Cardápio
@@ -106,7 +106,7 @@ export function Rodape() {
           </div>
         </div>
 
-        <div className="mt-12 flex flex-col gap-2 border-t border-borda pt-6 text-xs text-fumaca sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-9 flex flex-col gap-1.5 border-t border-borda pt-5 text-xs text-fumaca sm:mt-12 sm:flex-row sm:items-center sm:justify-between sm:gap-2 sm:pt-6">
           <p>
             © {ano} {empresa.razaoSocial ?? marca.nome}
             {empresa.cnpj && ` · CNPJ ${empresa.cnpj}`}
