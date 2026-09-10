@@ -42,8 +42,8 @@ export function Hero() {
           </h1>
 
           <p className="mt-7 max-w-xl text-lg leading-relaxed text-fumaca sm:text-xl">
-            Pão tradicional, maionese artesanal e salada fresca cortada no dia.
-            O seu lanche só começa a existir quando o pedido entra.
+            Hambúrguer artesanal de verdade, montado na hora. Peça pelo site,
+            pelo WhatsApp ou sente numa mesa.
           </p>
 
           <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center">

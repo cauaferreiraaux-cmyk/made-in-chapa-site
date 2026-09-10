@@ -97,22 +97,79 @@ body {
   display: none;
 }
 
-/* ── textura ─────────────────────────────────────────────────────────
-   Grão de fotografia noturna no site inteiro. Sem isso o preto chapado
-   fica com cara de tela de app, não de casa com luz baixa.
+/* ── o fundo é a chapa ───────────────────────────────────────────────
+   A casa se chama Made in Chapa, então o fundo do site é uma chapa: uma
+   superfície de metal escuro com ranhuras finas, e brasa viva pulsando por
+   baixo dela, como metal aquecido.
 
-   Vive no ::before do body, preso à viewport e ATRÁS do conteúdo (z-index
-   negativo fica acima do fundo do body e abaixo dos filhos). Assim a textura
-   aparece no fundo sem passar por cima das fotos e lavar a cor delas —
-   que era o defeito de aplicar o grão por seção, com mistura de camada.    */
+   São duas camadas presas à viewport, ambas ATRÁS do conteúdo (z-index
+   negativo fica acima do fundo do body e abaixo dos filhos). Antes o grão
+   era aplicado por cima, com mistura de camada, e lavava a cor das fotos.
+
+     ::after  (-2)  brasa que respira, embaixo
+     ::before (-1)  metal: ranhuras + grão, em cima da brasa
+*/
+
+body::after {
+  content: "";
+  position: fixed;
+  /* sobra além da tela para o movimento não descobrir a borda */
+  inset: -12%;
+  z-index: -2;
+  pointer-events: none;
+  background-image:
+    radial-gradient(
+      38% 28% at 12% 18%,
+      color-mix(in oklab, var(--color-brasa) 22%, transparent),
+      transparent 70%
+    ),
+    radial-gradient(
+      34% 26% at 88% 62%,
+      color-mix(in oklab, var(--color-ambar) 16%, transparent),
+      transparent 70%
+    ),
+    radial-gradient(
+      46% 34% at 46% 104%,
+      color-mix(in oklab, var(--color-brasa) 18%, transparent),
+      transparent 72%
+    );
+  animation: brasaViva 26s ease-in-out infinite alternate;
+}
+
+/* Metal por cima da brasa: ranhuras horizontais de 1px a cada 7px, o brilho
+   de topo da chapa e o grão que tira o aspecto de preto chapado. */
 body::before {
   content: "";
   position: fixed;
   inset: 0;
   z-index: -1;
   pointer-events: none;
-  opacity: 0.55;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='0.4'/%3E%3C/svg%3E");
+  background-image:
+    repeating-linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.03) 0 1px,
+      transparent 1px 7px
+    ),
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.04),
+      transparent 20%,
+      transparent 86%,
+      rgba(0, 0, 0, 0.32)
+    ),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='0.4'/%3E%3C/svg%3E");
+  opacity: 0.75;
+}
+
+@keyframes brasaViva {
+  from {
+    transform: translate3d(-1.6%, 0.8%, 0) scale(1);
+    opacity: 0.75;
+  }
+  to {
+    transform: translate3d(1.6%, -1.2%, 0) scale(1.07);
+    opacity: 1;
+  }
 }
 
 /* Mantida só como gancho de posicionamento nas seções que têm halo. */
@@ -192,6 +249,9 @@ body::before {
     animation: none;
   }
   .faixa-rolante {
+    animation: none;
+  }
+  body::after {
     animation: none;
   }
 }
