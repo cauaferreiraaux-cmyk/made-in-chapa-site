@@ -71,7 +71,10 @@ body {
   font-weight: 400;
   text-transform: uppercase;
   letter-spacing: -0.02em;
-  line-height: 0.88;
+  /* 0.88 era mais apertado e bonito em título sem acento, mas em português
+     título tem Ê, Á, Ó — e o acento da linha de baixo encostava na de cima.
+     0.95 mantém o bloco condensado e resolve para qualquer texto. */
+  line-height: 0.95;
 }
 
 /* Rótulo pequeno em versalete espaçado — usado como "olho" de seção. */
