@@ -39,3 +39,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# vídeo de apresentação gerado pelo tour (mora em ../video/)
+/tmp-tour/
