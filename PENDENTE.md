@@ -4,10 +4,17 @@ Tudo abaixo mora em **[`conteudo/site.ts`](./conteudo/site.ts)** — um arquivo 
 sem tocar em componente. Campo `null` não é desenhado na tela: nada de "a definir"
 indo ao ar.
 
-## 1. Conferir o cardápio com os donos
+## 1. Confirmar os preços com os donos — prioridade
 
-Preços e descrições vieram do **canal de pedidos da própria casa**, consultado em
-10/09/2026 — não são invenção nem leitura de foto. Ainda assim vale a conferida:
+**Os preços no site não são os que a casa pratica.** Os nomes e as descrições sim,
+vieram do canal de pedidos da própria loja (10/09/2026). Os valores foram alterados
+a pedido: comida com R$ 6,00 de desconto e centavos em 90, bebidas com R$ 3,00 de
+desconto. Exemplo: o X-Burguer da casa é R$ 20,00 e no site aparece R$ 14,90.
+
+Nada na tela indica isso ao visitante, então enquanto o site não for divulgado tudo
+bem — na hora de publicar, é o item que pesa.
+
+Sobre o cardápio em si, ainda vale conferir:
 
 - a loja estava marcada como offline no momento da consulta, então algum valor pode
   estar desatualizado;
@@ -29,7 +36,7 @@ Preços e descrições vieram do **canal de pedidos da própria casa**, consulta
 
 ## Já resolvido
 
-- **Preços e descrições reais** — vieram do canal de pedidos da casa (10/09/2026).
+- **Nomes e descrições reais** — vieram do canal de pedidos da casa (10/09/2026).
 - **Endereço** — Av. Ulysses Borges de Siqueira, 89, Braz Cubas, Mogi das Cruzes/SP,
   CEP 08740-540. O botão "como chegar" leva ao mapa.
 - **Horários** — seg a qui 18:30–01:30, sex e sáb 19:00–02:00, dom 18:00–01:00.
