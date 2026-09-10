@@ -14,7 +14,7 @@ function destinoDo(id: (typeof canais)[number]["id"]): string | null {
 
 export function ComoPedir() {
   return (
-    <section id="pedir" className="scroll-mt-24 py-20 sm:py-28">
+    <section id="pedir" className="scroll-mt-24 py-16 sm:py-28">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <Revelar>
           <TituloSecao
