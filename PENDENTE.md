@@ -4,15 +4,7 @@ Tudo abaixo mora em **[`conteudo/site.ts`](./conteudo/site.ts)** — um arquivo 
 sem tocar em componente. Campo `null` não é desenhado na tela: nada de "a definir"
 indo ao ar.
 
-## 1. Horários de funcionamento — única pendência que aparece na tela
-
-`horarios` está `null`. Enquanto isso, o cartão "Horário" manda o visitante para o
-Instagram da casa.
-
-Preenchendo, **o selo "aberto agora / fechado agora" liga sozinho** no topo do site,
-inclusive com faixa que passa da meia-noite (`abre: "18:00"`, `fecha: "01:00"`).
-
-## 2. Conferir o cardápio com os donos
+## 1. Conferir o cardápio com os donos
 
 Preços e descrições vieram do **canal de pedidos da própria casa**, consultado em
 10/09/2026 — não são invenção nem leitura de foto. Ainda assim vale a conferida:
@@ -27,7 +19,7 @@ Preços e descrições vieram do **canal de pedidos da própria casa**, consulta
 - promoções sazonais (era Dia dos Pais) ficaram de fora de propósito — promoção com
   data vence e fica mentindo no site.
 
-## 3. Menores
+## 2. Menores
 
 - `empresa.razaoSocial` e `empresa.cnpj` — rodapé.
 - `URL_SITE` em [`lib/links.ts`](./lib/links.ts) — domínio definitivo, só afeta o link
@@ -40,4 +32,7 @@ Preços e descrições vieram do **canal de pedidos da própria casa**, consulta
 - **Preços e descrições reais** — vieram do canal de pedidos da casa (10/09/2026).
 - **Endereço** — Av. Ulysses Borges de Siqueira, 89, Braz Cubas, Mogi das Cruzes/SP,
   CEP 08740-540. O botão "como chegar" leva ao mapa.
+- **Horários** — seg a qui 18:30–01:30, sex e sáb 19:00–02:00, dom 18:00–01:00.
+  O selo "aberto agora" está ligado; `npm run testa:horarios` cobre as viradas
+  de meia-noite.
 - **iFood** — decidido não entrar no site.

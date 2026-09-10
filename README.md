@@ -23,6 +23,7 @@ em [`conteudo/site.ts`](./conteudo/site.ts).
 ```bash
 npx tsc --noEmit
 npx eslint .
+npm run testa:horarios   # selo aberto/fechado, incluindo as viradas de meia-noite
 npm run build
 ```
 

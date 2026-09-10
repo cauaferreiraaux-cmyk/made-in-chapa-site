@@ -81,8 +81,16 @@ export const endereco: Endereco | null = {
   mapaUrl: null,
 };
 
-/** PENDENTE — horários de funcionamento. Preenchendo aqui, o selo "aberto agora" liga sozinho. */
-export const horarios: FaixaHorario[] | null = null;
+/**
+ * Horários da casa. Todas as faixas viram a meia-noite (fecham depois das 00h),
+ * e é isso que o selo "aberto agora" precisa tratar: fechar às 01:30 significa
+ * que na madrugada de sexta ainda vale a faixa de quinta.
+ */
+export const horarios: FaixaHorario[] | null = [
+  { rotulo: "Segunda a quinta", dias: [1, 2, 3, 4], abre: "18:30", fecha: "01:30" },
+  { rotulo: "Sexta e sábado", dias: [5, 6], abre: "19:00", fecha: "02:00" },
+  { rotulo: "Domingo", dias: [0], abre: "18:00", fecha: "01:00" },
+];
 
 /** PENDENTE — CNPJ e razão social, para o rodapé. */
 export const empresa = {

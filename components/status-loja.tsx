@@ -1,33 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { horarios, type FaixaHorario } from "@/conteudo/site";
-
-function minutosDe(hora: string): number {
-  const [h, m] = hora.split(":").map(Number);
-  return h * 60 + m;
-}
-
-/** Uma faixa que fecha depois da meia-noite vale para o dia seguinte também. */
-function estaAberta(faixas: FaixaHorario[], agora: Date): boolean {
-  const dia = agora.getDay();
-  const minutoAtual = agora.getHours() * 60 + agora.getMinutes();
-
-  return faixas.some((faixa) => {
-    const abre = minutosDe(faixa.abre);
-    const fecha = minutosDe(faixa.fecha);
-    const viraODia = fecha <= abre;
-
-    if (faixa.dias.includes(dia)) {
-      if (viraODia) return minutoAtual >= abre;
-      return minutoAtual >= abre && minutoAtual < fecha;
-    }
-    // madrugada do dia seguinte a uma faixa que virou
-    const diaAnterior = (dia + 6) % 7;
-    if (viraODia && faixa.dias.includes(diaAnterior)) return minutoAtual < fecha;
-    return false;
-  });
-}
+import { horarios } from "@/conteudo/site";
+import { estaAberta } from "@/lib/horarios";
 
 /**
  * Selo "aberto agora" / "fechado agora".
