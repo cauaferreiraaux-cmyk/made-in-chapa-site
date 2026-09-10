@@ -47,7 +47,9 @@ body {
   color: var(--color-osso);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
+  /* `clip`, nunca `hidden`: overflow hidden no body cria um contêiner de
+     rolagem e mata todo `position: sticky` da página. */
+  overflow-x: clip;
 }
 
 ::selection {
