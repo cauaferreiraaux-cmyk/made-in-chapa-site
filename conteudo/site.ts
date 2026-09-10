@@ -104,33 +104,33 @@ export const cardapio: CategoriaCardapio[] = [
     nome: "Burgers clássicos",
     chamada: "Pão tradicional, maionese artesanal e salada fresca da casa.",
     itens: [
-      { nome: "X-Burger", descricao: null, preco: 22 },
-      { nome: "X-Salada", descricao: null, preco: 25 },
-      { nome: "X-Bacon", descricao: null, preco: 28, destaque: true },
-      { nome: "X-Egg", descricao: null, preco: 26 },
+      { nome: "X-Burger", descricao: null, preco: 16.9 },
+      { nome: "X-Salada", descricao: null, preco: 19.9 },
+      { nome: "X-Bacon", descricao: null, preco: 22.9, destaque: true },
+      { nome: "X-Egg", descricao: null, preco: 20.9 },
       {
         nome: "X-Frango",
         descricao:
           "Pão tradicional, maionese artesanal, filé de frango, queijo muçarela e salada fresca (cebola roxa, tomate e alface).",
-        preco: 27,
+        preco: 21.9,
       },
       {
         nome: "X-Calabresa",
         descricao:
           "Pão tradicional, maionese artesanal, linguiça calabresa, queijo muçarela e salada fresca (cebola roxa, tomate e alface).",
-        preco: 27,
+        preco: 21.9,
       },
       {
         nome: "X-Churrasco",
         descricao:
           "Pão tradicional, maionese artesanal, contrafilé, queijo muçarela e salada fresca (cebola roxa, tomate e alface).",
-        preco: 32,
+        preco: 26.9,
       },
       {
         nome: "X-Tudo",
         descricao:
           "Pão tradicional, maionese artesanal, filé de frango, linguiça calabresa, ovo frito, bacon, queijo muçarela e salada fresca (cebola roxa, tomate e alface).",
-        preco: 38,
+        preco: 32.9,
         destaque: true,
       },
     ],
@@ -140,9 +140,9 @@ export const cardapio: CategoriaCardapio[] = [
     nome: "Especiais",
     chamada: "Os reforçados da casa, com carne mais alta.",
     itens: [
-      { nome: "Especial Salada", descricao: null, preco: 33 },
-      { nome: "Especial Egg", descricao: null, preco: 34 },
-      { nome: "Especial Bacon", descricao: null, preco: 36, destaque: true },
+      { nome: "Especial Salada", descricao: null, preco: 27.9 },
+      { nome: "Especial Egg", descricao: null, preco: 28.9 },
+      { nome: "Especial Bacon", descricao: null, preco: 30.9, destaque: true },
     ],
   },
   {
@@ -150,9 +150,9 @@ export const cardapio: CategoriaCardapio[] = [
     nome: "Combos",
     chamada: "Para dividir na mesa.",
     itens: [
-      { nome: "Combo individual", descricao: "Burger, porção de batata e bebida.", preco: 39 },
-      { nome: "Combo infantil", descricao: null, preco: 26 },
-      { nome: "Combo para dois", descricao: "Dois burgers e uma porção para dividir.", preco: 72 },
+      { nome: "Combo individual", descricao: "Burger, porção de batata e bebida.", preco: 33.9 },
+      { nome: "Combo infantil", descricao: null, preco: 20.9 },
+      { nome: "Combo para dois", descricao: "Dois burgers e uma porção para dividir.", preco: 66.9 },
     ],
   },
   {
@@ -160,9 +160,9 @@ export const cardapio: CategoriaCardapio[] = [
     nome: "Porções",
     chamada: null,
     itens: [
-      { nome: "Batata com cheddar e bacon", descricao: null, preco: 34, destaque: true },
-      { nome: "Anéis de cebola", descricao: null, preco: 29 },
-      { nome: "Batata frita", descricao: null, preco: 24 },
+      { nome: "Batata com cheddar e bacon", descricao: null, preco: 28.9, destaque: true },
+      { nome: "Anéis de cebola", descricao: null, preco: 23.9 },
+      { nome: "Batata frita", descricao: null, preco: 18.9 },
     ],
   },
 ];
