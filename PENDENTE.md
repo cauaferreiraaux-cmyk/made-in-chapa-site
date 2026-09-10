@@ -14,12 +14,13 @@ desconto. Exemplo: o X-Burguer da casa é R$ 20,00 e no site aparece R$ 14,90.
 Nada na tela indica isso ao visitante, então enquanto o site não for divulgado tudo
 bem — na hora de publicar, é o item que pesa.
 
+Batata frita (R$ 17,90), onion rings (R$ 14,90) e nuggets (R$ 12,90) não têm
+valor publicado pela loja: os preços do site foram definidos pelo cliente.
+
 Sobre o cardápio em si, ainda vale conferir:
 
 - a loja estava marcada como offline no momento da consulta, então algum valor pode
   estar desatualizado;
-- **Batata frita, Onion rings e Nuggets** não têm preço publicado na listagem e por
-  isso aparecem sem preço no site;
 - havia um "Especial Combo Kids" com dois valores diferentes em categorias
   diferentes (R$ 30,00 e R$ 36,99). Ficou o de R$ 30,00, que é o da categoria de
   combo infantil;

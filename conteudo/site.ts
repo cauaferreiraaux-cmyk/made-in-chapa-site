@@ -110,7 +110,8 @@ export const empresa = {
  *
  * Antes de o site ir ao ar, confirmar a tabela com os donos — ver PENDENTE.md.
  *
- * Item sem preço é item cujo valor a loja não publica na listagem.
+ * As porções batata frita, onion rings e nuggets não têm valor publicado pela
+ * loja — os preços delas também vieram do cliente.
  */
 export const cardapio: CategoriaCardapio[] = [
   {
@@ -268,18 +269,18 @@ export const cardapio: CategoriaCardapio[] = [
       {
         nome: "Batata frita",
         descricao: "Batata crinkle extremamente crocante (300g).",
-        preco: null,
+        preco: 17.9,
       },
       {
         nome: "Onion rings",
         descricao: "Anéis de cebola empanados (12 unidades).",
-        preco: null,
+        preco: 14.9,
       },
       {
         nome: "Nuggets",
         descricao:
           "Nuggets de frango, crocantes por fora e suculentos por dentro (12 unidades).",
-        preco: null,
+        preco: 12.9,
       },
     ],
   },
