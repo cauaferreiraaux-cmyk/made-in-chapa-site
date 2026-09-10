@@ -57,8 +57,9 @@ PENDENTE.md        ← o que ainda falta de conteúdo real
 - **Estático, não servidor.** O site não tem nada dinâmico; export estático é mais barato,
   mais rápido e não acrescenta um processo para cuidar na VPS.
 - **Dado que não existe não é inventado.** Campo `null` não vira placeholder na tela:
-  simplesmente não é desenhado. Os preços atuais são exceção consciente e assumida —
-  aparecem com aviso de "valores de exemplo" enquanto `PRECOS_SAO_EXEMPLO` for `true`.
+  simplesmente não é desenhado. Os preços são a exceção, consciente e assumida pelo
+  cliente: são de exemplo enquanto `PRECOS_SAO_EXEMPLO` for `true`, e desde 10/09/2026
+  a tela não avisa mais isso (o aviso foi retirado a pedido). Ver `PENDENTE.md`.
 - **A paleta veio do material impresso da casa** (cardápio preto, logo branco), não de
   gosto pessoal. O acento amarelo é a luz da tenda do salão.
 - **Sem biblioteca de UI.** São nove componentes; um design system aqui pesaria mais do

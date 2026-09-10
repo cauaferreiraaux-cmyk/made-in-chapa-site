@@ -84,11 +84,14 @@ export const empresa = {
 // ─────────────────────────────────────────────────────────── cardápio
 
 /**
- * ⚠️ PREÇOS DE EXEMPLO.
+ * ⚠️ PREÇOS DE EXEMPLO — E A TELA NÃO AVISA MAIS ISSO.
  *
- * Enquanto esta flag for `true`, o cardápio mostra um aviso de que os valores
- * são ilustrativos. Ao receber a tabela real dos donos: troque os números,
- * vire a flag para `false` e o aviso some sozinho.
+ * O aviso amarelo no cardápio foi retirado a pedido do cliente em 10/09/2026.
+ * Ou seja: quem abre o site lê estes valores como se fossem os de verdade.
+ * Enquanto esta flag for `true`, ela é o único registro de que não são —
+ * este comentário e o PENDENTE.md.
+ *
+ * Ao receber a tabela real: troque os números e vire a flag para `false`.
  */
 export const PRECOS_SAO_EXEMPLO = true;
 

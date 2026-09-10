@@ -1,13 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import {
-  cardapio,
-  contato,
-  PRECOS_SAO_EXEMPLO,
-  type ItemCardapio,
-} from "@/conteudo/site";
-import { linkWhatsapp } from "@/lib/links";
+import { cardapio, contato, type ItemCardapio } from "@/conteudo/site";
 import { Revelar } from "./revelar";
 import { TituloSecao } from "./titulo-secao";
 
@@ -72,27 +66,6 @@ export function Cardapio() {
             chamada="Carne prensada na hora, pão tostado na manteiga e salada cortada no dia."
           />
         </Revelar>
-
-        {PRECOS_SAO_EXEMPLO && (
-          <p className="mt-8 flex items-start gap-2 border border-ambar/40 bg-ambar/10 px-4 py-3 text-sm text-ambar sm:inline-flex sm:items-center">
-            <span aria-hidden className="mt-0.5 sm:mt-0">
-              ▲
-            </span>
-            <span>
-              Valores de exemplo. Confirme o preço atual no{" "}
-              <a
-                href={linkWhatsapp(
-                  "Olá! Queria confirmar os valores do cardápio.",
-                )}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="font-semibold whitespace-nowrap underline underline-offset-4"
-              >
-                WhatsApp
-              </a>
-            </span>
-          </p>
-        )}
 
         <div className="mt-10 grid gap-10 lg:grid-cols-12 lg:gap-14">
           {/* Categorias: coluna própria no desktop, faixa rolável no celular. */}

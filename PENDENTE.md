@@ -6,14 +6,19 @@ indo ao ar.
 
 ## 1. Preços — prioridade máxima
 
-Hoje o cardápio mostra **valores de exemplo** e um aviso amarelo dizendo isso.
+Os preços que estão no site são **inventados** e, desde 10/09/2026, **a tela não
+avisa mais isso** — o aviso amarelo foi retirado a pedido do cliente. Quem abrir o
+site vai ler esses valores como se fossem os reais.
+
 Os preços impressos no cardápio da mesa não tinham resolução para leitura na foto
 (tentei correção de perspectiva e ampliação; continuou ilegível).
 
 Ao receber a tabela real:
 
 1. troque os números em `cardapio`;
-2. mude `PRECOS_SAO_EXEMPLO` para `false` — o aviso some sozinho.
+2. mude `PRECOS_SAO_EXEMPLO` para `false`.
+
+**Enquanto isso não acontecer, este é o item que mais pesa se o site for divulgado.**
 
 ## 2. Nomes e descrições — conferir
 

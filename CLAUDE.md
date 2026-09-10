@@ -21,8 +21,10 @@ npx tsc --noEmit && npx eslint . && npm run build
 - **Campo `null` não vira placeholder.** A seção some ou muda de texto, mas não
   aparece "a definir" na tela. O que falta está em `PENDENTE.md`.
 - **Exceção assumida:** os preços são de exemplo enquanto `PRECOS_SAO_EXEMPLO`
-  for `true`, e nesse caso o cardápio mostra um aviso dizendo isso. Ao receber a
-  tabela real, troque os números e vire a flag.
+  for `true`. O aviso na tela foi retirado a pedido do cliente em 10/09/2026, então
+  hoje nada indica ao visitante que os valores não são reais — a flag e o
+  `PENDENTE.md` são o único registro. Ao receber a tabela real, troque os números
+  e vire a flag.
 - **Sem backend.** `output: "export"`. Nada de Server Action, rota de API ou
   `cookies()` — o build quebra e é para quebrar mesmo.
 - **Server Component por padrão.** `"use client"` só onde há estado ou observador:
