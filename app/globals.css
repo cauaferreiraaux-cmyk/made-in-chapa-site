@@ -205,6 +205,94 @@ body::before {
 
 /* ── movimento ───────────────────────────────────────────────────── */
 
+/* ── entrada da página ───────────────────────────────────────────────
+   Tudo em CSS puro, com atraso escalonado: começa no primeiro quadro, sem
+   esperar JavaScript nenhum, e por isso não atrasa a leitura do conteúdo.  */
+
+/* As linhas do título sobem de trás de uma máscara (o pai tem overflow
+   hidden). É o que dá o efeito de tipografia "revelada" em vez de só
+   aparecer. */
+@keyframes subirLinha {
+  from {
+    opacity: 0;
+    transform: translateY(105%);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes entrarBaixo {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* O quadro de mídia entra com um respiro de escala, não só aparecendo. */
+@keyframes entrarQuadro {
+  from {
+    opacity: 0;
+    transform: translateY(26px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* A brasa acende como a chapa esquentando. */
+@keyframes acender {
+  from {
+    opacity: 0;
+    transform: scale(0.75);
+  }
+  to {
+    opacity: 0.4;
+    transform: none;
+  }
+}
+
+/* O estado escondido vive DENTRO da media query, nunca na regra base: se a
+   animação não rodar — navegador antigo, CSS pela metade, preferência de menos
+   movimento —, o topo do site aparece normalmente em vez de ficar invisível.
+   Conteúdo escondido esperando animação é a pior falha possível aqui. */
+.entra-brasa {
+  opacity: 0.4;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .entra-linha,
+  .entra,
+  .entra-quadro,
+  .entra-brasa {
+    opacity: 0;
+    animation-duration: 0.95s;
+    animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+    animation-fill-mode: forwards;
+  }
+
+  .entra-linha {
+    animation-name: subirLinha;
+  }
+  .entra {
+    animation-name: entrarBaixo;
+  }
+  .entra-quadro {
+    animation-name: entrarQuadro;
+    animation-duration: 1.15s;
+  }
+  .entra-brasa {
+    animation-name: acender;
+    animation-duration: 1.8s;
+  }
+}
+
 @keyframes revelar {
   from {
     opacity: 0;
@@ -254,4 +342,6 @@ body::before {
   body::after {
     animation: none;
   }
+  /* as animações de entrada nem chegam a ser declaradas aqui: vivem só
+     dentro de (prefers-reduced-motion: no-preference) */
 }
