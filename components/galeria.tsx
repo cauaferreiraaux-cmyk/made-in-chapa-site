@@ -51,8 +51,10 @@ export function Galeria() {
   const foto = aberta === null ? null : galeria[aberta];
 
   return (
-    <section id="fotos" className="scroll-mt-24 py-16 sm:py-28">
-      <div className="mx-auto max-w-7xl px-5 sm:px-8">
+    <section id="fotos" className="relative isolate scroll-mt-24 py-16 sm:py-28">
+      <div className="halo top-10 -right-48" aria-hidden />
+
+      <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
         <Revelar>
           <TituloSecao
             olho="Os lanches"

@@ -8,7 +8,7 @@ export function Hero() {
   return (
     <section
       id="topo"
-      className="grao relative isolate overflow-hidden pt-28 pb-14 sm:pt-32 lg:pt-40 lg:pb-24"
+      className="relative isolate overflow-hidden pt-28 pb-14 sm:pt-32 lg:pt-40 lg:pb-24"
     >
       {/* Brasa fora de foco atrás do texto: dá temperatura ao preto chapado. */}
       <div

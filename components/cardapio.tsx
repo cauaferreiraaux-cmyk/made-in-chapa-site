@@ -53,8 +53,10 @@ export function Cardapio() {
   if (!categoria) return null;
 
   return (
-    <section id="cardapio" className="scroll-mt-24 py-16 sm:py-28">
-      <div className="mx-auto max-w-7xl px-5 sm:px-8">
+    <section id="cardapio" className="relative isolate scroll-mt-24 py-16 sm:py-28">
+      <div className="halo -top-20 -left-40" aria-hidden />
+
+      <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
         <Revelar>
           <TituloSecao
             olho="O cardápio"

@@ -98,18 +98,43 @@ body {
 }
 
 /* ── textura ─────────────────────────────────────────────────────────
-   Grão sutil por cima do fundo. Sem isso o preto chapado fica de tela
-   de app, não de casa de hambúrguer.                                   */
-.grao::before {
+   Grão de fotografia noturna no site inteiro. Sem isso o preto chapado
+   fica com cara de tela de app, não de casa com luz baixa.
+
+   Vive no ::before do body, preso à viewport e ATRÁS do conteúdo (z-index
+   negativo fica acima do fundo do body e abaixo dos filhos). Assim a textura
+   aparece no fundo sem passar por cima das fotos e lavar a cor delas —
+   que era o defeito de aplicar o grão por seção, com mistura de camada.    */
+body::before {
   content: "";
-  position: absolute;
+  position: fixed;
   inset: 0;
+  z-index: -1;
   pointer-events: none;
-  /* soft-light em vez de overlay: o grão continua dando textura ao preto sem
-     lavar a cor das fotos que ficam por baixo na mesma seção. */
-  opacity: 0.35;
-  mix-blend-mode: soft-light;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='0.35'/%3E%3C/svg%3E");
+  opacity: 0.55;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='0.4'/%3E%3C/svg%3E");
+}
+
+/* Mantida só como gancho de posicionamento nas seções que têm halo. */
+.grao {
+  position: relative;
+}
+
+/* Halo quente de brasa. Entra sempre com blur e opacidade baixa: é luz de
+   ambiente atrás do conteúdo, não um círculo colorido na tela. */
+.halo {
+  position: absolute;
+  pointer-events: none;
+  z-index: 0;
+  width: 34rem;
+  height: 34rem;
+  filter: blur(80px);
+  opacity: 0.5;
+  background-image: radial-gradient(
+    50% 50% at 50% 50%,
+    color-mix(in oklab, var(--color-brasa) 32%, transparent),
+    transparent 72%
+  );
 }
 
 /* Brilho de brasa atrás de um elemento. */

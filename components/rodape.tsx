@@ -6,9 +6,11 @@ export function Rodape() {
   const ano = new Date().getFullYear();
 
   return (
-    <footer className="grao relative overflow-hidden border-t border-borda bg-carvao-2">
+    <footer className="relative isolate overflow-hidden border-t border-borda bg-carvao-2">
       {/* Chamada final: a última coisa da página é um botão, não um texto. */}
-      <div className="mx-auto max-w-7xl px-5 py-16 sm:px-8 sm:py-20">
+      <div className="halo -top-40 right-0" aria-hidden />
+
+      <div className="relative mx-auto max-w-7xl px-5 py-16 sm:px-8 sm:py-20">
         <div className="flex flex-col items-start justify-between gap-8 border-b border-borda pb-14 lg:flex-row lg:items-end">
           <p className="display max-w-2xl text-[clamp(2.25rem,6vw,4rem)]">
             Bateu a fome?{" "}

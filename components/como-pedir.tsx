@@ -22,8 +22,10 @@ export function ComoPedir() {
   const mapa = linkMapa();
 
   return (
-    <section id="pedir" className="scroll-mt-24 py-16 sm:py-28">
-      <div className="mx-auto max-w-7xl px-5 sm:px-8">
+    <section id="pedir" className="relative isolate scroll-mt-24 py-16 sm:py-28">
+      <div className="halo -top-24 -left-52" aria-hidden />
+
+      <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
         <Revelar>
           <TituloSecao
             olho="Como pedir"
