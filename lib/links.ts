@@ -1,4 +1,4 @@
-import { contato, endereco } from "@/conteudo/site";
+import { contato, endereco, marca } from "@/conteudo/site";
 
 /**
  * PENDENTE — domínio definitivo. Só afeta as URLs absolutas de compartilhamento
@@ -15,10 +15,19 @@ export function linkWhatsapp(
 
 export const linkInstagram = `https://instagram.com/${contato.instagram}`;
 
-/** `null` enquanto não houver endereço confirmado — o botão some sozinho. */
+/**
+ * Link do "como chegar".
+ *
+ * Sem rua e número confirmados, busca pelo NOME do estabelecimento no bairro —
+ * é assim que o mapa acha a casa, e é o que resolve para quem quer ir até lá.
+ */
 export function linkMapa(): string | null {
   if (!endereco) return null;
   if (endereco.mapaUrl) return endereco.mapaUrl;
-  const busca = `${endereco.logradouro}, ${endereco.bairro}, ${endereco.cidade} - ${endereco.uf}`;
+
+  const busca = endereco.logradouro
+    ? `${endereco.logradouro}, ${endereco.bairro}, ${endereco.cidade} - ${endereco.uf}`
+    : `${marca.nome} ${marca.categoria}, ${endereco.bairro}, ${endereco.cidade} - ${endereco.uf}`;
+
   return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(busca)}`;
 }

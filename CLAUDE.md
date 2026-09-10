@@ -20,11 +20,10 @@ npx tsc --noEmit && npx eslint . && npm run build
   tipado. Componente não tem string de conteúdo chumbada.
 - **Campo `null` não vira placeholder.** A seção some ou muda de texto, mas não
   aparece "a definir" na tela. O que falta está em `PENDENTE.md`.
-- **Exceção assumida:** os preços são de exemplo enquanto `PRECOS_SAO_EXEMPLO`
-  for `true`. O aviso na tela foi retirado a pedido do cliente em 10/09/2026, então
-  hoje nada indica ao visitante que os valores não são reais — a flag e o
-  `PENDENTE.md` são o único registro. Ao receber a tabela real, troque os números
-  e vire a flag.
+- **Preço é dado da casa, não chute.** Os valores atuais vieram do canal de pedidos
+  da própria hamburgueria (10/09/2026). Item sem preço publicado fica com `preco: null`
+  e aparece sem valor — nunca um número inventado para "preencher".
+- **Nada de iFood no site.** Decisão do cliente.
 - **Sem backend.** `output: "export"`. Nada de Server Action, rota de API ou
   `cookies()` — o build quebra e é para quebrar mesmo.
 - **Server Component por padrão.** `"use client"` só onde há estado ou observador:

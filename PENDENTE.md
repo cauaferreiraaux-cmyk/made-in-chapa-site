@@ -4,50 +4,40 @@ Tudo abaixo mora em **[`conteudo/site.ts`](./conteudo/site.ts)** — um arquivo 
 sem tocar em componente. Campo `null` não é desenhado na tela: nada de "a definir"
 indo ao ar.
 
-## 1. Preços — prioridade máxima
+## 1. Horários de funcionamento — única pendência que aparece na tela
 
-Os preços que estão no site são **inventados** e, desde 10/09/2026, **a tela não
-avisa mais isso** — o aviso amarelo foi retirado a pedido do cliente. Quem abrir o
-site vai ler esses valores como se fossem os reais.
+`horarios` está `null`. Enquanto isso, o cartão "Horário" manda o visitante para o
+Instagram da casa.
 
-Os preços impressos no cardápio da mesa não tinham resolução para leitura na foto
-(tentei correção de perspectiva e ampliação; continuou ilegível).
+Preenchendo, **o selo "aberto agora / fechado agora" liga sozinho** no topo do site,
+inclusive com faixa que passa da meia-noite (`abre: "18:00"`, `fecha: "01:00"`).
 
-Ao receber a tabela real:
+## 2. Conferir o cardápio com os donos
 
-1. troque os números em `cardapio`;
-2. mude `PRECOS_SAO_EXEMPLO` para `false`.
+Preços e descrições vieram do **canal de pedidos da própria casa**, consultado em
+10/09/2026 — não são invenção nem leitura de foto. Ainda assim vale a conferida:
 
-**Enquanto isso não acontecer, este é o item que mais pesa se o site for divulgado.**
+- a loja estava marcada como offline no momento da consulta, então algum valor pode
+  estar desatualizado;
+- **Batata frita, Onion rings e Nuggets** não têm preço publicado na listagem e por
+  isso aparecem sem preço no site;
+- havia um "Especial Combo Kids" com dois valores diferentes em categorias
+  diferentes (R$ 30,00 e R$ 36,99). Ficou o de R$ 30,00, que é o da categoria de
+  combo infantil;
+- promoções sazonais (era Dia dos Pais) ficaram de fora de propósito — promoção com
+  data vence e fica mentindo no site.
 
-## 2. Nomes e descrições — conferir
+## 3. Menores
 
-Vieram da leitura da foto do cardápio da mesa. Legíveis com confiança razoável, mas
-**não confirmados pelos donos**:
-
-- Clássicos: X-Burger, X-Salada, X-Bacon, X-Egg, X-Frango, X-Calabresa, X-Churrasco, X-Tudo
-- Especiais: os nomes saíram parciais na foto (há mais itens do que os três listados)
-- Combos e porções: os itens no site são plausíveis, **não lidos** — confirmar antes de publicar
-
-Descrição só existe para X-Frango, X-Calabresa, X-Churrasco e X-Tudo; as demais estão
-`null` e simplesmente não aparecem.
-
-## 3. Endereço do salão
-
-`endereco` está `null`. Sem ele, a seção "Onde estamos" mostra um texto pedindo contato
-pelo WhatsApp e o cartão "No salão" fica sem o botão "como chegar".
-
-## 4. Horários de funcionamento
-
-`horarios` está `null`. Preenchendo, **o selo "aberto agora / fechado agora" liga sozinho**
-no topo — inclusive com faixa que passa da meia-noite (`abre: "18:00"`, `fecha: "01:00"`).
-
-## 5. Menores
-
-- `contato.ifoodUrl` — a casa vende pelo iFood (o sistema financeiro tem esse canal), mas o
-  link não foi passado. Com ele, dá para acrescentar um quarto caminho em "Como pedir".
 - `empresa.razaoSocial` e `empresa.cnpj` — rodapé.
-- `URL_SITE` em [`lib/links.ts`](./lib/links.ts) — domínio definitivo, só afeta o link de
-  compartilhamento.
-- Foto de cada item do cardápio: hoje as fotos vivem numa galeria sem amarrar foto a item,
+- `URL_SITE` em [`lib/links.ts`](./lib/links.ts) — domínio definitivo, só afeta o link
+  de compartilhamento.
+- Foto por item do cardápio: hoje as fotos vivem numa galeria sem amarrar foto a item,
   porque a correspondência exata não foi confirmada.
+
+## Já resolvido
+
+- **Preços e descrições reais** — vieram do canal de pedidos da casa (10/09/2026).
+- **Endereço** — Av. Ulysses Borges de Siqueira, 89, Braz Cubas, Mogi das Cruzes/SP,
+  CEP 08740-540. O botão "como chegar" leva ao mapa.
+- **iFood** — decidido não entrar no site.

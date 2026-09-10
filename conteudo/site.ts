@@ -35,7 +35,8 @@ export type FaixaHorario = {
 };
 
 export type Endereco = {
-  logradouro: string;
+  /** `null` enquanto rua e número não forem confirmados. */
+  logradouro: string | null;
   bairro: string;
   cidade: string;
   uf: string;
@@ -51,7 +52,7 @@ export const marca = {
   categoria: "Hamburgueria",
   /** Uma frase. Aparece no <title> e no compartilhamento. */
   resumo:
-    "Hambúrguer artesanal feito na chapa, na hora. Delivery, iFood e salão.",
+    "Hambúrguer artesanal feito na chapa, na hora. Delivery e salão em Mogi das Cruzes.",
 } as const;
 
 export const contato = {
@@ -63,14 +64,22 @@ export const contato = {
   instagram: "madeinchapa_",
   /** Loja online própria — é o "Compre aqui" do site. */
   lojaOnlineUrl: "https://madeinchapa.connectprojetosesistemas.com.br",
-  /** PENDENTE — link da loja no iFood. */
-  ifoodUrl: null as string | null,
   /** PENDENTE — e-mail de contato, se houver. */
   email: null as string | null,
 } as const;
 
-/** PENDENTE — endereço do salão. */
-export const endereco: Endereco | null = null;
+/**
+ * Endereço do salão, confirmado pelo cadastro do estabelecimento — o telefone
+ * que vem junto dele é o mesmo impresso no cardápio da mesa.
+ */
+export const endereco: Endereco | null = {
+  logradouro: "Av. Ulysses Borges de Siqueira, 89",
+  bairro: "Braz Cubas",
+  cidade: "Mogi das Cruzes",
+  uf: "SP",
+  cep: "08740-540",
+  mapaUrl: null,
+};
 
 /** PENDENTE — horários de funcionamento. Preenchendo aqui, o selo "aberto agora" liga sozinho. */
 export const horarios: FaixaHorario[] | null = null;
@@ -84,68 +93,118 @@ export const empresa = {
 // ─────────────────────────────────────────────────────────── cardápio
 
 /**
- * ⚠️ PREÇOS DE EXEMPLO — E A TELA NÃO AVISA MAIS ISSO.
+ * Cardápio oficial da casa, com os preços e as descrições publicados pela
+ * própria loja no seu canal de pedidos (consultado em 10/09/2026).
  *
- * O aviso amarelo no cardápio foi retirado a pedido do cliente em 10/09/2026.
- * Ou seja: quem abre o site lê estes valores como se fossem os de verdade.
- * Enquanto esta flag for `true`, ela é o único registro de que não são —
- * este comentário e o PENDENTE.md.
- *
- * Ao receber a tabela real: troque os números e vire a flag para `false`.
- */
-export const PRECOS_SAO_EXEMPLO = true;
-
-/**
- * Nomes e descrições foram LIDOS da foto do cardápio da mesa
- * (`~/fotos-made-in-chapa`) — precisam de conferência com os donos.
- * Os preços impressos não tinham resolução para leitura: os que estão aqui são
- * EXEMPLO, para dar volume à tela enquanto a tabela real não chega.
+ * Item sem preço aqui é item cujo valor a loja não publica na listagem — a tela
+ * mostra o item sem preço, nunca um número inventado.
  */
 export const cardapio: CategoriaCardapio[] = [
   {
-    id: "classicos",
-    nome: "Burgers clássicos",
-    chamada: "Pão tradicional, maionese artesanal e salada fresca da casa.",
+    id: "tradicionais",
+    nome: "Burgers tradicionais",
+    chamada: "Hambúrguer artesanal de 150g e a maionese tradicional da casa.",
     itens: [
-      { nome: "X-Burger", descricao: null, preco: 16.9 },
-      { nome: "X-Salada", descricao: null, preco: 19.9 },
-      { nome: "X-Bacon", descricao: null, preco: 22.9, destaque: true },
-      { nome: "X-Egg", descricao: null, preco: 20.9 },
+      {
+        nome: "X-Burguer",
+        descricao:
+          "Hambúrguer artesanal de carne 150g coberto por queijo derretido e a maionese tradicional da casa.",
+        preco: 20,
+      },
+      {
+        nome: "X-Salada",
+        descricao:
+          "Hambúrguer artesanal de carne 150g, queijo derretido, maionese da casa e salada fresca (cebola, tomate e alface).",
+        preco: 24,
+      },
+      {
+        nome: "X-Egg",
+        descricao:
+          "Hambúrguer artesanal de carne 150g, queijo derretido, ovo frito estrelado, maionese da casa e salada fresca (cebola roxa, alface e tomate).",
+        preco: 25,
+      },
+      {
+        nome: "X-Bacon",
+        descricao:
+          "Hambúrguer artesanal de carne 150g, queijo derretido, maionese da casa, tiras de bacon e salada fresca (cebola roxa, tomate e alface).",
+        preco: 26,
+        destaque: true,
+      },
       {
         nome: "X-Frango",
         descricao:
-          "Pão tradicional, maionese artesanal, filé de frango, queijo muçarela e salada fresca (cebola roxa, tomate e alface).",
-        preco: 21.9,
+          "Filé de frango coberto por queijo derretido, maionese da casa e salada fresca (cebola roxa, tomate e alface).",
+        preco: 24,
       },
       {
         nome: "X-Calabresa",
         descricao:
-          "Pão tradicional, maionese artesanal, linguiça calabresa, queijo muçarela e salada fresca (cebola roxa, tomate e alface).",
-        preco: 21.9,
+          "Fatias de linguiça calabresa cobertas por queijo derretido, maionese da casa e salada fresca (cebola roxa, tomate e alface).",
+        preco: 24,
       },
       {
         nome: "X-Churrasco",
         descricao:
-          "Pão tradicional, maionese artesanal, contrafilé, queijo muçarela e salada fresca (cebola roxa, tomate e alface).",
-        preco: 26.9,
+          "Bife de contrafilé coberto por queijo derretido, maionese da casa e salada fresca (cebola roxa, tomate e alface).",
+        preco: 35,
       },
       {
         nome: "X-Tudo",
         descricao:
-          "Pão tradicional, maionese artesanal, filé de frango, linguiça calabresa, ovo frito, bacon, queijo muçarela e salada fresca (cebola roxa, tomate e alface).",
-        preco: 32.9,
+          "Hambúrguer artesanal 150g, presunto e queijo muçarela, filé de frango, linguiça calabresa, ovo frito, tiras de bacon, maionese da casa e salada fresca (cebola roxa, tomate e alface).",
+        preco: 50,
         destaque: true,
+      },
+      {
+        nome: "Hot Dog",
+        descricao:
+          "Pão médio, salsicha, maionese da casa, purê de batata, bacon, ketchup e mostarda, batata palha e salada fresca (alface e tomate).",
+        preco: 22,
       },
     ],
   },
   {
-    id: "especiais",
-    nome: "Especiais",
-    chamada: "Os reforçados da casa, com carne mais alta.",
+    id: "gourmet",
+    nome: "Burgers gourmet",
+    chamada: "Carne de 180g, queijo cheddar e o molho verde da casa.",
     itens: [
-      { nome: "Especial Salada", descricao: null, preco: 27.9 },
-      { nome: "Especial Egg", descricao: null, preco: 28.9 },
-      { nome: "Especial Bacon", descricao: null, preco: 30.9, destaque: true },
+      {
+        nome: "Especial Double Cheddar",
+        descricao:
+          "Hambúrguer artesanal de 180g coberto por duas fatias de cheddar, molho verde da casa e anéis de cebola roxa.",
+        preco: 30,
+      },
+      {
+        nome: "Especial Bacon Barbecue",
+        descricao:
+          "Hambúrguer artesanal de 180g, cheddar, tiras de bacon, anéis de cebola roxa, molho verde da casa e molho barbecue.",
+        preco: 35,
+        destaque: true,
+      },
+      {
+        nome: "Especial Onion Barbecue",
+        descricao:
+          "Hambúrguer artesanal de 180g, cheddar, três anéis de cebola empanados, cebola roxa, molho barbecue e maionese verde da casa.",
+        preco: 31,
+      },
+      {
+        nome: "Especial Egg",
+        descricao:
+          "Hambúrguer artesanal de 180g, cheddar, maionese verde da casa, ovo frito e anéis de cebola roxa.",
+        preco: 33,
+      },
+      {
+        nome: "Especial Salada",
+        descricao:
+          "Hambúrguer artesanal de 180g, cheddar, maionese verde da casa e salada fresca (cebola roxa, tomate e alface).",
+        preco: 31,
+      },
+      {
+        nome: "Especial Catupiry",
+        descricao:
+          "Hambúrguer artesanal de 180g coberto por Catupiry, maionese verde da casa e cebola roxa.",
+        preco: 45.99,
+      },
     ],
   },
   {
@@ -153,19 +212,83 @@ export const cardapio: CategoriaCardapio[] = [
     nome: "Combos",
     chamada: "Para dividir na mesa.",
     itens: [
-      { nome: "Combo individual", descricao: "Burger, porção de batata e bebida.", preco: 33.9 },
-      { nome: "Combo infantil", descricao: null, preco: 20.9 },
-      { nome: "Combo para dois", descricao: "Dois burgers e uma porção para dividir.", preco: 66.9 },
+      {
+        nome: "Combo Casal",
+        descricao:
+          "1 X-Salada, 1 X-Bacon, porção de fritas com cheddar e bacon, anéis de cebola empanados e 1 refrigerante de 600 ml.",
+        preco: 65,
+      },
+      {
+        nome: "Combo Trio",
+        descricao:
+          "1 X-Salada, 1 X-Bacon, 1 X-Burguer, porção de fritas com cheddar e bacon, anéis de cebola empanados e 1 refrigerante de 2 litros.",
+        preco: 75,
+        destaque: true,
+      },
+      {
+        nome: "Combo Família",
+        descricao:
+          "1 X-Salada, 1 X-Bacon, 1 X-Burguer, 1 X-Egg, porção de fritas com cheddar e bacon, anéis de cebola empanados e 1 refrigerante de 2 litros.",
+        preco: 85,
+      },
+      {
+        nome: "Combo Kids",
+        descricao: "X-Burguer, batata de 150g e bebida de 200 ml.",
+        preco: 30,
+      },
+      { nome: "2 X-Bacon + bebida 2 L", descricao: null, preco: 58 },
+      { nome: "3 X-Bacon + bebida 2 L", descricao: null, preco: 92 },
+      { nome: "4 X-Bacon + bebida 2 L", descricao: null, preco: 118 },
     ],
   },
   {
     id: "porcoes",
     nome: "Porções",
+    chamada: "Todas acompanham um molho à sua escolha.",
+    itens: [
+      {
+        nome: "Batata com cheddar e bacon",
+        descricao: null,
+        preco: 30,
+        destaque: true,
+      },
+      {
+        nome: "Batata frita",
+        descricao: "Batata crinkle extremamente crocante (300g).",
+        preco: null,
+      },
+      {
+        nome: "Onion rings",
+        descricao: "Anéis de cebola empanados (12 unidades).",
+        preco: null,
+      },
+      {
+        nome: "Nuggets",
+        descricao:
+          "Nuggets de frango, crocantes por fora e suculentos por dentro (12 unidades).",
+        preco: null,
+      },
+      {
+        nome: "Porção churrasco",
+        descricao:
+          "Contrafilé, linguiça calabresa, frango, batata e anéis de cebola.",
+        preco: 150,
+      },
+    ],
+  },
+  {
+    id: "bebidas",
+    nome: "Bebidas",
     chamada: null,
     itens: [
-      { nome: "Batata com cheddar e bacon", descricao: null, preco: 28.9, destaque: true },
-      { nome: "Anéis de cebola", descricao: null, preco: 23.9 },
-      { nome: "Batata frita", descricao: null, preco: 18.9 },
+      { nome: "Coca-Cola lata 350 ml", descricao: null, preco: 7 },
+      { nome: "Coca-Cola Zero lata 350 ml", descricao: null, preco: 7 },
+      { nome: "Guaraná Antarctica lata 350 ml", descricao: null, preco: 7 },
+      { nome: "Fanta Uva lata 350 ml", descricao: null, preco: 7 },
+      { nome: "Sprite lata 310 ml", descricao: null, preco: 7 },
+      { nome: "Coca-Cola 600 ml", descricao: null, preco: 9 },
+      { nome: "Coca-Cola Zero 600 ml", descricao: null, preco: 8 },
+      { nome: "Coca-Cola 2 litros", descricao: null, preco: 16 },
     ],
   },
 ];
