@@ -5,9 +5,11 @@ import { cardapio } from "@/conteudo/site";
  * O conteúdo é duplicado porque a animação anda -50%: o laço fecha sem emenda.
  */
 export function FaixaRolante() {
-  const nomes = cardapio.flatMap((categoria) =>
-    categoria.itens.map((item) => item.nome),
-  );
+  // Só os burgers: é o que faz alguém parar e olhar. Bebida e porção em corpo
+  // gigante viram ruído.
+  const nomes = cardapio
+    .filter((categoria) => categoria.id === "tradicionais" || categoria.id === "gourmet")
+    .flatMap((categoria) => categoria.itens.map((item) => item.nome));
   if (nomes.length === 0) return null;
 
   const sequencia = [...nomes, ...nomes];
