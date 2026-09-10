@@ -45,7 +45,7 @@ export function Hero() {
 
           {/* Cada linha vive dentro de um bloco com overflow escondido: é o
               que faz o texto surgir de trás da máscara em vez de só aparecer. */}
-          <h1 className="display mt-4 text-[clamp(2.1rem,8.5vw,7.5rem)] sm:mt-6">
+          <h1 className="display mt-4 text-[clamp(2.6rem,11vw,7.5rem)] sm:mt-6">
             <span className="block overflow-hidden pb-[0.06em]">
               <span className="entra-linha block [animation-delay:90ms]">
                 Na chapa.
@@ -65,7 +65,7 @@ export function Hero() {
           </div>
 
           <div>
-            <p className="entra max-w-xl text-sm leading-relaxed text-osso/75 [animation-delay:470ms] sm:mt-7 sm:text-xl sm:text-fumaca">
+            <p className="entra hidden max-w-xl text-sm leading-relaxed text-osso/75 [animation-delay:470ms] lg:mt-7 lg:block lg:text-xl lg:text-fumaca">
             Hambúrguer artesanal de verdade, montado na hora. Peça pelo site,
             pelo WhatsApp ou sente numa mesa.
           </p>
@@ -91,7 +91,7 @@ export function Hero() {
             </a>
           </div>
 
-          <p className="entra mt-4 font-mono text-xs text-osso/80 [animation-delay:680ms] sm:mt-7 sm:text-sm sm:text-fumaca">
+          <p className="entra mt-4 text-center font-mono text-xs text-osso/80 [animation-delay:680ms] sm:text-sm lg:mt-7 lg:text-left lg:text-fumaca">
             <a href="#cardapio" className="inline-block py-2 text-osso underline decoration-borda decoration-2 underline-offset-4 transition-colors hover:decoration-brasa">
               Ver o cardápio
             </a>
