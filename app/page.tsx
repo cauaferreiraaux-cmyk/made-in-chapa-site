@@ -5,7 +5,6 @@ import { ComoPedir } from "@/components/como-pedir";
 import { FaixaRolante } from "@/components/faixa-rolante";
 import { Galeria } from "@/components/galeria";
 import { Hero } from "@/components/hero";
-import { LancheDesmonta } from "@/components/lanche-desmonta";
 import { Rodape } from "@/components/rodape";
 import { Salao } from "@/components/salao";
 
@@ -17,7 +16,6 @@ export default function Home() {
         <Hero />
         <FaixaRolante />
         <Cardapio />
-        <LancheDesmonta />
         <Galeria />
         <Salao />
         <ComoPedir />
