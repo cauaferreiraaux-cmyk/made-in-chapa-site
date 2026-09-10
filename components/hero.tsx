@@ -29,13 +29,13 @@ export function Hero() {
             no topo, e a conversa de pedido colada na base. O meio fica livre
             para o lanche — que é o motivo de a mídia estar ali atrás.
             No desktop volta a ser um bloco só na coluna da esquerda. */}
-        <div className="sobre-midia relative z-10 flex min-h-[100dvh] flex-col justify-between pt-24 pb-9 lg:col-span-7 lg:block lg:min-h-0 lg:pt-0 lg:pb-0">
+        <div className="sobre-midia relative z-10 flex min-h-[100dvh] flex-col justify-between pt-[5.5rem] pb-9 lg:col-span-7 lg:block lg:min-h-0 lg:pt-0 lg:pb-0">
           <div>
             {/* No celular a linha de identidade fica centralizada como chapéu
                 e o selo volta para a esquerda, embaixo dela. No desktop os dois
                 seguem na mesma linha, alinhados à esquerda. */}
             <div className="entra flex flex-col items-start gap-3 lg:flex-row lg:flex-wrap lg:items-center">
-              <div className="flex w-full flex-wrap items-center justify-center gap-3 lg:w-auto lg:justify-start">
+              <div className="hidden w-full flex-wrap items-center justify-center gap-3 lg:flex lg:w-auto lg:justify-start">
                 <span className="eyebrow text-brasa">Hamburgueria</span>
                 <span className="h-px w-10 bg-borda" aria-hidden />
                 <span className="eyebrow text-fumaca">Delivery e salão</span>
@@ -45,7 +45,7 @@ export function Hero() {
 
           {/* Cada linha vive dentro de um bloco com overflow escondido: é o
               que faz o texto surgir de trás da máscara em vez de só aparecer. */}
-          <h1 className="display mt-4 text-[clamp(2.6rem,11vw,7.5rem)] sm:mt-6">
+          <h1 className="display mt-3 text-[clamp(2.9rem,13vw,7.5rem)] sm:mt-6">
             <span className="block overflow-hidden pb-[0.06em]">
               <span className="entra-linha block [animation-delay:90ms]">
                 Na chapa.
