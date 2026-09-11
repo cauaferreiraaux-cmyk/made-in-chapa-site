@@ -20,8 +20,8 @@ npx tsc --noEmit && npx eslint . && npm run build
   tipado. Componente não tem string de conteúdo chumbada.
 - **Campo `null` não vira placeholder.** A seção some ou muda de texto, mas não
   aparece "a definir" na tela. O que falta está em `PENDENTE.md`.
-- **Preço é dado da casa, não chute.** Os valores atuais vieram do canal de pedidos
-  da própria hamburgueria (10/09/2026). Item sem preço publicado fica com `preco: null`
+- **Preço é dado da casa, não chute.** Os valores vieram do cardápio impresso da
+  própria hamburgueria (10/09/2026). Item sem preço publicado fica com `preco: null`
   e aparece sem valor — nunca um número inventado para "preencher".
 - **Nada de iFood no site.** Decisão do cliente.
 - **Sem backend.** `output: "export"`. Nada de Server Action, rota de API ou

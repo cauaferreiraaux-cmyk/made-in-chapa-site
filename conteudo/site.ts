@@ -101,123 +101,133 @@ export const empresa = {
 // ─────────────────────────────────────────────────────────── cardápio
 
 /**
- * ⚠️ OS PREÇOS AQUI NÃO SÃO OS DA CASA.
+ * Cardápio da casa, lido do cardápio impresso que os donos usam (foto de
+ * 10/09/2026). Nomes, descrições e preços são os deles.
  *
- * Os nomes e as descrições vieram do canal de pedidos da própria loja
- * (10/09/2026) e são fiéis. Os PREÇOS foram alterados a pedido do cliente:
- * comida com R$ 6,00 de desconto e centavos travados em 90, bebidas com
- * R$ 3,00 de desconto. Nada na tela avisa isso ao visitante.
- *
- * Antes de o site ir ao ar, confirmar a tabela com os donos — ver PENDENTE.md.
- *
- * As porções batata frita, onion rings e nuggets não têm valor publicado pela
- * loja — os preços delas também vieram do cliente.
+ * Duas exceções, ambas de itens que NÃO aparecem no impresso:
+ * - porções e bebidas vêm do canal de pedidos online da própria loja;
+ * - batata frita, onion rings e nuggets não têm valor publicado em lugar
+ *   nenhum, e os preços deles foram definidos pelo cliente.
  */
 export const cardapio: CategoriaCardapio[] = [
   {
-    id: "tradicionais",
-    nome: "Burgers tradicionais",
-    chamada: "Hambúrguer artesanal de 150g e a maionese tradicional da casa.",
+    id: "classicos",
+    nome: "Burgers clássicos",
+    chamada: "Pão tradicional e hambúrguer artesanal de 160g.",
     itens: [
       {
-        nome: "X-Burguer",
+        nome: "X-Burger",
         descricao:
-          "Hambúrguer artesanal de carne 150g coberto por queijo derretido e a maionese tradicional da casa.",
-        preco: 14.90,
+          "Pão tradicional, hambúrguer artesanal 160g, queijo muçarela e a irresistível maionese da casa.",
+        preco: 22,
       },
       {
         nome: "X-Salada",
         descricao:
-          "Hambúrguer artesanal de carne 150g, queijo derretido, maionese da casa e salada fresca (cebola, tomate e alface).",
-        preco: 18.90,
-      },
-      {
-        nome: "X-Egg",
-        descricao:
-          "Hambúrguer artesanal de carne 150g, queijo derretido, ovo frito estrelado, maionese da casa e salada fresca (cebola roxa, alface e tomate).",
-        preco: 19.90,
+          "Pão tradicional, maionese, hambúrguer artesanal 160g, queijo muçarela e salada fresca (cebola roxa, tomate e alface).",
+        preco: 26,
       },
       {
         nome: "X-Bacon",
         descricao:
-          "Hambúrguer artesanal de carne 150g, queijo derretido, maionese da casa, tiras de bacon e salada fresca (cebola roxa, tomate e alface).",
-        preco: 20.90,
+          "Pão tradicional, maionese, hambúrguer artesanal 160g, queijo muçarela, bacon e salada fresca (cebola roxa, tomate e alface).",
+        preco: 32,
         destaque: true,
       },
       {
         nome: "X-Frango",
         descricao:
-          "Filé de frango coberto por queijo derretido, maionese da casa e salada fresca (cebola roxa, tomate e alface).",
-        preco: 18.90,
+          "Pão tradicional, maionese artesanal, filé de frango, queijo muçarela e salada fresca (cebola roxa, tomate e alface).",
+        preco: 26,
       },
       {
         nome: "X-Calabresa",
         descricao:
-          "Fatias de linguiça calabresa cobertas por queijo derretido, maionese da casa e salada fresca (cebola roxa, tomate e alface).",
-        preco: 18.90,
+          "Pão tradicional, maionese artesanal, linguiça calabresa, queijo muçarela e salada fresca (cebola roxa, tomate e alface).",
+        preco: 26,
       },
       {
         nome: "X-Churrasco",
         descricao:
-          "Bife de contrafilé coberto por queijo derretido, maionese da casa e salada fresca (cebola roxa, tomate e alface).",
-        preco: 29.90,
+          "Pão tradicional, maionese artesanal, contrafilé, queijo muçarela e salada fresca (cebola roxa, tomate e alface).",
+        preco: 38,
       },
       {
         nome: "X-Tudo",
         descricao:
-          "Hambúrguer artesanal 150g, presunto e queijo muçarela, filé de frango, linguiça calabresa, ovo frito, tiras de bacon, maionese da casa e salada fresca (cebola roxa, tomate e alface).",
-        preco: 44.90,
+          "Pão tradicional, maionese artesanal, filé de frango, linguiça calabresa, ovo frito, bacon, queijo muçarela e salada fresca (cebola roxa, tomate e alface).",
+        preco: 55,
         destaque: true,
-      },
-      {
-        nome: "Hot Dog",
-        descricao:
-          "Pão médio, salsicha, maionese da casa, purê de batata, bacon, ketchup e mostarda, batata palha e salada fresca (alface e tomate).",
-        preco: 16.90,
       },
     ],
   },
   {
     id: "gourmet",
     nome: "Burgers gourmet",
-    chamada: "Carne de 180g, queijo cheddar e o molho verde da casa.",
+    chamada: "Pão de brioche, maionese verde da casa e carne de 160g.",
     itens: [
+      {
+        nome: "Especial Catupiry",
+        descricao:
+          "Pão de brioche, maionese verde, hambúrguer artesanal 160g, catupiry e cebola roxa.",
+        preco: 32,
+      },
       {
         nome: "Especial Double Cheddar",
         descricao:
-          "Hambúrguer artesanal de 180g coberto por duas fatias de cheddar, molho verde da casa e anéis de cebola roxa.",
-        preco: 24.90,
+          "Pão de brioche, maionese verde, hambúrguer artesanal 160g, queijo cheddar, molho cheddar e cebola roxa.",
+        preco: 32,
       },
       {
         nome: "Especial Bacon Barbecue",
         descricao:
-          "Hambúrguer artesanal de 180g, cheddar, tiras de bacon, anéis de cebola roxa, molho verde da casa e molho barbecue.",
-        preco: 29.90,
+          "Pão de brioche, maionese verde, hambúrguer artesanal 160g, queijo cheddar, molho barbecue, bacon e cebola roxa.",
+        preco: 36,
         destaque: true,
       },
       {
         nome: "Especial Onion Barbecue",
         descricao:
-          "Hambúrguer artesanal de 180g, cheddar, três anéis de cebola empanados, cebola roxa, molho barbecue e maionese verde da casa.",
-        preco: 25.90,
+          "Pão de brioche, maionese verde, hambúrguer artesanal 160g, queijo cheddar, onion rings, molho barbecue e cebola roxa.",
+        preco: 34,
       },
       {
         nome: "Especial Egg",
         descricao:
-          "Hambúrguer artesanal de 180g, cheddar, maionese verde da casa, ovo frito e anéis de cebola roxa.",
-        preco: 27.90,
+          "Pão de brioche, maionese verde, hambúrguer artesanal 160g, queijo cheddar, ovo frito e cebola roxa.",
+        preco: 34,
       },
       {
         nome: "Especial Salada",
         descricao:
-          "Hambúrguer artesanal de 180g, cheddar, maionese verde da casa e salada fresca (cebola roxa, tomate e alface).",
-        preco: 25.90,
+          "Pão de brioche, maionese verde, hambúrguer artesanal 160g, queijo cheddar e salada fresca (cebola roxa, tomate e alface).",
+        preco: 33,
+      },
+    ],
+  },
+  {
+    id: "hotdogs",
+    nome: "Hot dogs",
+    chamada: null,
+    itens: [
+      {
+        nome: "Hot dog simples",
+        descricao:
+          "Pão médio, 1 salsicha, maionese artesanal, tomate, ketchup, mostarda, alface e batata palha.",
+        preco: 17,
       },
       {
-        nome: "Especial Catupiry",
+        nome: "Hot dog médio",
         descricao:
-          "Hambúrguer artesanal de 180g coberto por Catupiry, maionese verde da casa e cebola roxa.",
-        preco: 39.90,
+          "Pão médio, 1 salsicha, maionese artesanal, purê de batata, bacon, tomate, ketchup, mostarda, alface e batata palha.",
+        preco: 22,
+      },
+      {
+        nome: "Dogão",
+        descricao:
+          "Pão grande, 2 salsichas, maionese artesanal, purê de batata, bacon, tomate, ketchup, mostarda, alface e batata palha.",
+        preco: 27,
+        destaque: true,
       },
     ],
   },
@@ -229,30 +239,49 @@ export const cardapio: CategoriaCardapio[] = [
       {
         nome: "Combo Casal",
         descricao:
-          "1 X-Salada, 1 X-Bacon, porção de fritas com cheddar e bacon, anéis de cebola empanados e 1 refrigerante de 600 ml.",
-        preco: 59.90,
+          "1 X-Bacon + 1 X-Salada, feitos no pão de brioche 300g com hambúrguer artesanal de 110g + batata com cheddar e bacon + onion rings + 1 bebida 1L.",
+        preco: 75,
       },
       {
         nome: "Combo Trio",
         descricao:
-          "1 X-Salada, 1 X-Bacon, 1 X-Burguer, porção de fritas com cheddar e bacon, anéis de cebola empanados e 1 refrigerante de 2 litros.",
-        preco: 69.90,
+          "1 X-Bacon + 1 X-Salada + 1 X-Burger, feitos no pão de brioche 300g com hambúrguer artesanal de 110g + batata com cheddar e bacon + onion rings + 1 bebida 2L.",
+        preco: 85,
         destaque: true,
       },
       {
         nome: "Combo Família",
         descricao:
-          "1 X-Salada, 1 X-Bacon, 1 X-Burguer, 1 X-Egg, porção de fritas com cheddar e bacon, anéis de cebola empanados e 1 refrigerante de 2 litros.",
-        preco: 79.90,
+          "1 X-Bacon + 1 X-Salada + 1 X-Burger + 1 X-Egg, feitos no pão de brioche 300g com hambúrguer artesanal de 110g + batata com cheddar e bacon + onion rings + 1 bebida 2L.",
+        preco: 95,
       },
       {
-        nome: "Combo Kids",
-        descricao: "X-Burguer, batata de 150g e bebida de 200 ml.",
-        preco: 24.90,
+        nome: "Especial Combo Kids",
+        descricao:
+          "Pão de brioche 300g, hambúrguer artesanal 110g, maionese verde + 1 batata frita 150g + 1 lata 350ml.",
+        preco: 35,
       },
-      { nome: "2 X-Bacon + bebida 2 L", descricao: null, preco: 52.90 },
-      { nome: "3 X-Bacon + bebida 2 L", descricao: null, preco: 86.90 },
-      { nome: "4 X-Bacon + bebida 2 L", descricao: null, preco: 112.90 },
+      {
+        nome: "X-Bacon + batata + lata",
+        descricao:
+          "Pão tradicional, maionese, hambúrguer artesanal 160g, queijo muçarela, bacon e salada fresca (cebola, tomate e alface) + 1 batata 150g + 1 lata 350ml.",
+        preco: 46,
+      },
+      {
+        nome: "Dog médio + batata + lata",
+        descricao: "1 hot dog médio completo + 1 batata 150g + 1 lata 350ml.",
+        preco: 38,
+      },
+      {
+        nome: "2 médios + refri 1L",
+        descricao: "2 hot dogs médios completos + 1 bebida 1L.",
+        preco: 50,
+      },
+      {
+        nome: "2 dogões + refri 1L",
+        descricao: "2 dogões completos + 1 bebida 1L.",
+        preco: 60,
+      },
     ],
   },
   {
@@ -263,7 +292,7 @@ export const cardapio: CategoriaCardapio[] = [
       {
         nome: "Batata com cheddar e bacon",
         descricao: null,
-        preco: 24.90,
+        preco: 30,
         destaque: true,
       },
       {
@@ -289,14 +318,14 @@ export const cardapio: CategoriaCardapio[] = [
     nome: "Bebidas",
     chamada: null,
     itens: [
-      { nome: "Coca-Cola lata 350 ml", descricao: null, preco: 4 },
-      { nome: "Coca-Cola Zero lata 350 ml", descricao: null, preco: 4 },
-      { nome: "Guaraná Antarctica lata 350 ml", descricao: null, preco: 4 },
-      { nome: "Fanta Uva lata 350 ml", descricao: null, preco: 4 },
-      { nome: "Sprite lata 310 ml", descricao: null, preco: 4 },
-      { nome: "Coca-Cola 600 ml", descricao: null, preco: 6 },
-      { nome: "Coca-Cola Zero 600 ml", descricao: null, preco: 5 },
-      { nome: "Coca-Cola 2 litros", descricao: null, preco: 13 },
+      { nome: "Coca-Cola lata 350 ml", descricao: null, preco: 7 },
+      { nome: "Coca-Cola Zero lata 350 ml", descricao: null, preco: 7 },
+      { nome: "Guaraná Antarctica lata 350 ml", descricao: null, preco: 7 },
+      { nome: "Fanta Uva lata 350 ml", descricao: null, preco: 7 },
+      { nome: "Sprite lata 310 ml", descricao: null, preco: 7 },
+      { nome: "Coca-Cola 600 ml", descricao: null, preco: 9 },
+      { nome: "Coca-Cola Zero 600 ml", descricao: null, preco: 8 },
+      { nome: "Coca-Cola 2 litros", descricao: null, preco: 16 },
     ],
   },
 ];

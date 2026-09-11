@@ -4,28 +4,18 @@ Tudo abaixo mora em **[`conteudo/site.ts`](./conteudo/site.ts)** — um arquivo 
 sem tocar em componente. Campo `null` não é desenhado na tela: nada de "a definir"
 indo ao ar.
 
-## 1. Confirmar os preços com os donos — prioridade
+## 1. Conferir dois pontos do cardápio
 
-**Os preços no site não são os que a casa pratica.** Os nomes e as descrições sim,
-vieram do canal de pedidos da própria loja (10/09/2026). Os valores foram alterados
-a pedido: comida com R$ 6,00 de desconto e centavos em 90, bebidas com R$ 3,00 de
-desconto. Exemplo: o X-Burguer da casa é R$ 20,00 e no site aparece R$ 14,90.
+Nomes, descrições e preços vieram do **cardápio impresso da própria casa** (foto
+de 10/09/2026), então o grosso está certo. Sobram duas pontas:
 
-Nada na tela indica isso ao visitante, então enquanto o site não for divulgado tudo
-bem — na hora de publicar, é o item que pesa.
-
-Batata frita (R$ 17,90), onion rings (R$ 14,90) e nuggets (R$ 12,90) não têm
-valor publicado pela loja: os preços do site foram definidos pelo cliente.
-
-Sobre o cardápio em si, ainda vale conferir:
-
-- a loja estava marcada como offline no momento da consulta, então algum valor pode
-  estar desatualizado;
-- havia um "Especial Combo Kids" com dois valores diferentes em categorias
-  diferentes (R$ 30,00 e R$ 36,99). Ficou o de R$ 30,00, que é o da categoria de
-  combo infantil;
-- promoções sazonais (era Dia dos Pais) ficaram de fora de propósito — promoção com
-  data vence e fica mentindo no site.
+- **porções e bebidas não aparecem no cardápio impresso.** Os valores no site
+  vêm do canal de pedidos online da loja; batata frita (R$ 17,90), onion rings
+  (R$ 14,90) e nuggets (R$ 12,90) não têm valor publicado em lugar nenhum e
+  foram definidos pelo cliente;
+- **o X-Egg saiu.** Ele existia no canal online, mas não está no cardápio
+  impresso novo — só é citado como item do Combo Família. Ficou de fora dos
+  clássicos; se ainda for vendido, é só voltar com ele.
 
 ## 2. Menores
 
@@ -37,7 +27,8 @@ Sobre o cardápio em si, ainda vale conferir:
 
 ## Já resolvido
 
-- **Nomes e descrições reais** — vieram do canal de pedidos da casa (10/09/2026).
+- **Cardápio real** — nomes, descrições e preços do cardápio impresso da casa
+  (10/09/2026). São 36 itens em seis categorias, e nenhum item fica sem preço.
 - **Endereço** — Av. Ulysses Borges de Siqueira, 89, Braz Cubas, Mogi das Cruzes/SP,
   CEP 08740-540. O botão "como chegar" leva ao mapa.
 - **Horários** — seg a qui 18:30–01:30, sex e sáb 19:00–02:00, dom 18:00–01:00.
