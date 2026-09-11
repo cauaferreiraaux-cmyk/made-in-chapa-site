@@ -45,7 +45,7 @@ export function Hero() {
 
           {/* Cada linha vive dentro de um bloco com overflow escondido: é o
               que faz o texto surgir de trás da máscara em vez de só aparecer. */}
-          <h1 className="display mt-3 text-[clamp(2.9rem,13vw,7.5rem)] sm:mt-6">
+          <h1 className="display mt-3 text-[clamp(2.9rem,13vw,7.5rem)] leading-[0.95] sm:mt-6">
             <span className="block overflow-hidden pb-[0.06em]">
               <span className="entra-linha block [animation-delay:90ms]">
                 Na chapa.

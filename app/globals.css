@@ -67,33 +67,41 @@ body {
   outline-offset: 3px;
 }
 
-/* ── títulos ─────────────────────────────────────────────────────────
-   Anton só existe em um peso; o caráter vem do tamanho e do tracking
-   negativo. Em caixa alta, sem tracking apertado, ela fica frouxa.     */
-.display {
-  font-family: var(--font-display);
-  font-weight: 400;
-  text-transform: uppercase;
-  letter-spacing: -0.02em;
-  /* Em português título tem Ê, Á, Ó, e a Anton põe o acento acima da caixa da
-     linha. Com 0.88 ele invadia a linha de cima; com 0.95 ainda encostava em
-     tela estreita, onde o título quebra mais. 1.02 é o primeiro valor em que
-     nenhuma combinação encosta, e o bloco continua condensado. */
-  line-height: 1.02;
-}
+/* ── classes tipográficas ─────────────────────────────────────────────
+   Dentro de @layer components DE PROPÓSITO: CSS fora de camada vence
+   qualquer utilitário do Tailwind (que vive em @layer utilities). Com a
+   .display solta, um `leading-[0.95]` escrito no próprio componente era
+   ignorado — o título do topo herdava a entrelinha dos outros títulos. */
+@layer components {
+  /* ── títulos ─────────────────────────────────────────────────────────
+     Anton só existe em um peso; o caráter vem do tamanho e do tracking
+     negativo. Em caixa alta, sem tracking apertado, ela fica frouxa.     */
+  .display {
+    font-family: var(--font-display);
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+    /* A Anton põe o acento de maiúscula (Á, Ê, É) cerca de 0,11em ACIMA da
+       altura das letras. Medido em captura: com entrelinha 1.02 o Á de "ESTÁ"
+       ainda entrava dentro da linha de cima, sobre o E de "BATEU". 1.16 cobre a
+       invasão com folga. O título do topo, que não tem acento e fica melhor
+       apertado, sobrescreve isso no próprio componente. */
+    line-height: 1.16;
+  }
 
-/* Rótulo pequeno em versalete espaçado — usado como "olho" de seção. */
-.eyebrow {
-  font-size: 0.6875rem;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  font-weight: 600;
-}
+  /* Rótulo pequeno em versalete espaçado — usado como "olho" de seção. */
+  .eyebrow {
+    font-size: 0.6875rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
 
-/* Texto vazado, só contorno. Dá o ritmo cheio/vazio da faixa rolante. */
-.vazado {
-  color: transparent;
-  -webkit-text-stroke: 1px var(--color-fumaca);
+  /* Texto vazado, só contorno. Dá o ritmo cheio/vazio da faixa rolante. */
+  .vazado {
+    color: transparent;
+    -webkit-text-stroke: 1px var(--color-fumaca);
+  }
 }
 
 /* Faixa que rola no dedo sem mostrar a barra — a barra cinza no meio da
