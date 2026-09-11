@@ -113,7 +113,14 @@ export function Rodape() {
           </p>
           <p>
             Site por{" "}
-            <span className="text-osso">WCJ Tecnologia</span>
+            <a
+              href="https://wcjtecnologia.com.br"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-osso underline decoration-borda decoration-1 underline-offset-4 transition-colors hover:decoration-brasa"
+            >
+              WCJ Tecnologia
+            </a>
           </p>
         </div>
       </div>
