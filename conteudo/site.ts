@@ -206,32 +206,6 @@ export const cardapio: CategoriaCardapio[] = [
     ],
   },
   {
-    id: "hotdogs",
-    nome: "Hot dogs",
-    chamada: null,
-    itens: [
-      {
-        nome: "Hot dog simples",
-        descricao:
-          "Pão médio, 1 salsicha, maionese artesanal, tomate, ketchup, mostarda, alface e batata palha.",
-        preco: 17,
-      },
-      {
-        nome: "Hot dog médio",
-        descricao:
-          "Pão médio, 1 salsicha, maionese artesanal, purê de batata, bacon, tomate, ketchup, mostarda, alface e batata palha.",
-        preco: 22,
-      },
-      {
-        nome: "Dogão",
-        descricao:
-          "Pão grande, 2 salsichas, maionese artesanal, purê de batata, bacon, tomate, ketchup, mostarda, alface e batata palha.",
-        preco: 27,
-        destaque: true,
-      },
-    ],
-  },
-  {
     id: "combos",
     nome: "Combos",
     chamada: "Para dividir na mesa.",
@@ -266,21 +240,6 @@ export const cardapio: CategoriaCardapio[] = [
         descricao:
           "Pão tradicional, maionese, hambúrguer artesanal 160g, queijo muçarela, bacon e salada fresca (cebola, tomate e alface) + 1 batata 150g + 1 lata 350ml.",
         preco: 46,
-      },
-      {
-        nome: "Dog médio + batata + lata",
-        descricao: "1 hot dog médio completo + 1 batata 150g + 1 lata 350ml.",
-        preco: 38,
-      },
-      {
-        nome: "2 médios + refri 1L",
-        descricao: "2 hot dogs médios completos + 1 bebida 1L.",
-        preco: 50,
-      },
-      {
-        nome: "2 dogões + refri 1L",
-        descricao: "2 dogões completos + 1 bebida 1L.",
-        preco: 60,
       },
     ],
   },
