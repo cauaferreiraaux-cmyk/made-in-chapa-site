@@ -305,12 +305,6 @@ export type ComboDestaque = {
   alt: string;
   /** O que vem na caixa, quebrado em itens curtos. */
   itens: string[];
-  /**
-   * A loja online (Connect) só vende o Combo Casal. Trio e Família a casa faz,
-   * mas não estão lá — mandar quem quer esses dois para o "Compre aqui" seria
-   * jogar o cliente num beco sem saída, então o pedido deles vai pelo WhatsApp.
-   */
-  naLojaOnline: boolean;
 };
 
 export const combosDestaque: ComboDestaque[] = [
@@ -326,7 +320,6 @@ export const combosDestaque: ComboDestaque[] = [
       "Anéis de cebola",
       "Bebida de 1 litro",
     ],
-    naLojaOnline: true,
   },
   {
     nome: "Combo Trio",
@@ -340,7 +333,6 @@ export const combosDestaque: ComboDestaque[] = [
       "Anéis de cebola",
       "Bebida de 2 litros",
     ],
-    naLojaOnline: false,
   },
   {
     nome: "Combo Família",
@@ -354,7 +346,6 @@ export const combosDestaque: ComboDestaque[] = [
       "Anéis de cebola",
       "Bebida de 2 litros",
     ],
-    naLojaOnline: false,
   },
 ];
 

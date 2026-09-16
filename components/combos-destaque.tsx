@@ -117,32 +117,30 @@ export function CombosDestaque() {
                       ))}
                     </ul>
 
-                    {/* A loja online não tem Trio nem Família: nesses o pedido
-                        vai pelo WhatsApp, senão o botão levaria a um lugar onde
-                        o combo não existe. */}
-                    {combo.naLojaOnline ? (
+                    {/* Os dois caminhos em todo card. A loja online (Connect)
+                        hoje só tem o Combo Casal, então para Trio e Família é o
+                        WhatsApp que fecha o pedido — ter os dois botões evita
+                        que alguém termine num lugar sem o combo. */}
+                    <div className="mt-6 grid gap-2.5">
                       <a
                         href={contato.lojaOnlineUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="group mt-6 inline-flex items-center justify-center gap-3 bg-brasa px-6 py-3.5 text-xs font-bold tracking-wider text-carvao uppercase transition-colors hover:bg-brasa-viva sm:text-sm"
+                        className="group inline-flex items-center justify-center gap-3 bg-brasa px-6 py-3.5 text-xs font-bold tracking-wider text-carvao uppercase transition-colors hover:bg-brasa-viva sm:text-sm"
                       >
                         Compre aqui
                         <IconeSeta className="size-4 transition-transform group-hover:translate-x-1" />
                       </a>
-                    ) : (
                       <a
-                        href={linkWhatsapp(
-                          `Olá! Queria pedir o ${combo.nome}.`,
-                        )}
+                        href={linkWhatsapp(`Olá! Queria pedir o ${combo.nome}.`)}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="group mt-6 inline-flex items-center justify-center gap-3 border border-borda px-6 py-3.5 text-xs font-bold tracking-wider text-osso uppercase transition-colors hover:border-osso sm:text-sm"
+                        className="inline-flex items-center justify-center gap-3 border border-borda px-6 py-3.5 text-xs font-bold tracking-wider text-osso uppercase transition-colors hover:border-osso sm:text-sm"
                       >
                         <IconeWhatsapp className="size-4" />
                         Pedir no WhatsApp
                       </a>
-                    )}
+                    </div>
                   </div>
                 </article>
               </Revelar>
