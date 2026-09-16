@@ -289,6 +289,75 @@ export const cardapio: CategoriaCardapio[] = [
   },
 ];
 
+// ─────────────────────────────────────────────────────────── a linha de frente
+
+export type ComboDestaque = {
+  /**
+   * Precisa bater exatamente com o `nome` em `cardapio`: o PREÇO vem de lá.
+   * Repetir o valor aqui criaria duas verdades dentro do próprio site.
+   */
+  nome: string;
+  /** Para quantos serve, em palavras. */
+  chamada: string;
+  /** Mesmo número, para calcular quanto sai por pessoa. */
+  pessoas: number;
+  foto: string;
+  alt: string;
+  /** O que vem na caixa, quebrado em itens curtos. */
+  itens: string[];
+  /**
+   * A loja online (Connect) só vende o Combo Casal. Trio e Família a casa faz,
+   * mas não estão lá — mandar quem quer esses dois para o "Compre aqui" seria
+   * jogar o cliente num beco sem saída, então o pedido deles vai pelo WhatsApp.
+   */
+  naLojaOnline: boolean;
+};
+
+export const combosDestaque: ComboDestaque[] = [
+  {
+    nome: "Combo Casal",
+    chamada: "Para dois",
+    pessoas: 2,
+    foto: "/img/combo-duplo.webp",
+    alt: "Caixa com dois hambúrgueres, batata com cheddar e bacon e anéis de cebola",
+    itens: [
+      "1 X-Bacon + 1 X-Salada no pão de brioche",
+      "Batata com cheddar e bacon",
+      "Anéis de cebola",
+      "Bebida de 1 litro",
+    ],
+    naLojaOnline: true,
+  },
+  {
+    nome: "Combo Trio",
+    chamada: "Para três",
+    pessoas: 3,
+    foto: "/img/combo-trio.webp",
+    alt: "Caixa com três hambúrgueres, batata com cheddar e bacon e anéis de cebola",
+    itens: [
+      "1 X-Bacon + 1 X-Salada + 1 X-Burger no pão de brioche",
+      "Batata com cheddar e bacon",
+      "Anéis de cebola",
+      "Bebida de 2 litros",
+    ],
+    naLojaOnline: false,
+  },
+  {
+    nome: "Combo Família",
+    chamada: "Para quatro",
+    pessoas: 4,
+    foto: "/img/combo-quarteto.webp",
+    alt: "Caixa com quatro hambúrgueres, batata com cheddar e bacon e anéis de cebola",
+    itens: [
+      "1 X-Bacon + 1 X-Salada + 1 X-Burger + 1 X-Egg no pão de brioche",
+      "Batata com cheddar e bacon",
+      "Anéis de cebola",
+      "Bebida de 2 litros",
+    ],
+    naLojaOnline: false,
+  },
+];
+
 // ─────────────────────────────────────────────────────────── como pedir
 
 export const canais = [
